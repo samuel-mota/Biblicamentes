@@ -1,0 +1,786 @@
+/*************************************
+**************************************
+*** CSS RESET => (normalize.css)
+*** DOCUMENT SETUP
+*** SITE STRUCTURE
+*** HEADER
+*** CONTENT
+*** FOOTER
+*** MEDIA QUERIES
+*************************************
+*************************************/
+
+/*************************************
+*** DOCUMENT SETUP
+*************************************/
+
+/* FONTS */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css'); /*HTML <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">*/
+@import url('https://fonts.googleapis.com/css?family=Antic+Slab|Baloo+Bhaijaan|Baloo+Chettan|Baloo+Paaji|Comfortaa|Fascinate|Fredoka+One|Galada|Kaushan+Script|Kavoon|Lemon|Lora|Milonga|Modak|Overlock|Paprika|Pridi|Radley|Salsa|Vesper+Libre');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif');
+
+/* VARIABLES (color, breakpoint, font-family, ...) */
+:root {
+  /*cores padrao*/
+  --azul: #00F;
+  --purpura: #800080;
+  --purpura-hover: hsl(300, 100%, 35%);
+  --purpura-escuro: #570058;
+  --carmesim: #dc143c;
+  --branco: #fff;
+  --branco-hover: hsl(0, 0%, 80%);
+  --preto: #000;
+  --cor-escura: #212529;
+  --cor-clara: #f8f9fa;
+
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+
+  --block-spacing: 30px;
+  --footer-spacing: 15px;
+
+  /* --font-family-sans-serif: "Open Sans", Arial, sans-serif; */
+  
+  --font-family-sans-serif: 'Open Sans', Arial, sans-serif;
+  --font-family-serif: 'Noto Serif', 'Times New Roman', serif;
+  --font-family-main-titles: 'Kaushan Script', cursive;
+  --font-family-monospace: 'Roboto Mono', 'Courier New', monospace;
+  --font-family-fa5: 'Font Awesome 5 Free';
+}
+  /* --font-family-sans-serif: 'Antic Slab', serif; */
+  /* 'Comfortaa', cursive; OK MENU E BOTOES
+    "Open Sans", Arial, sans-serif; MENU E BOTOES
+
+    'Lemon', cursive; +/- TITULO
+    'Kaushan Script', cursive; TITULO    
+    'Milonga', cursive; +/- TITULO
+  
+    'Salsa', cursive; OK TEXTO
+    'Lora', serif; OK TEXTO
+    font-family: 'Noto Serif', serif; MUITO BONITA TANTO PRA TEXTO QNTO PRA TITULO*/
+
+/* GENERAL SETUP */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  font-family: var(--font-family-sans-serif);
+  color: var(--cor-escura);
+  background-color: var(--cor-clara);
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--purpura-hover);
+}
+
+img {
+  vertical-align: middle;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+
+/* MOBILE-FIRST */
+.container {
+  width: 100%;
+  padding-right: 1.5em; /*16+8=24px*/
+  padding-left: 1.5em;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+
+/*************************************
+*** SITE STRUCTURE 
+*************************************/
+
+/* MAIN BLOCKS */
+#body-container,
+#content,
+#footer {
+  display: flex;
+  flex-direction: column;
+}
+
+#content {
+  padding-top: calc(0px + 84px + 1.5rem); /*header-top (28px desktop) + header-main + margin-bottom*/
+  text-align: center;
+}
+
+/* BLOCK SPACING */
+.instagram-feed, 
+.estudo-biblico-div, 
+.wiki-biblia-div, 
+.random-verse1, 
+.random-verse2 {
+  margin-bottom: var(--block-spacing);
+}
+
+/*************************************
+*** HEADER 
+*************************************/
+
+#header {
+  position: relative;
+}
+
+#header-main {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+#header-top a:hover,
+#header-top a:focus {
+  color: var(--branco-hover);
+}
+
+#header-main {
+/*margin-bottom: 1.5rem !important;*/
+  color: var(--purpura);
+  background-color: rgba(186,207,255,0.9);
+  position: fixed;
+  top: 0; /*see .navbar-top font-size, #content, 28px desktop*/
+
+  /*transition: background-color .4s,color .4s,transform .4s,opacity .4s ease-in-out;*/
+}
+
+#header-top {
+  display: none;
+  text-align: right;
+  color: var(--cor-clara);
+  background-color: var(--purpura);
+}
+
+/* HEADER NAVIGATION */
+.navbar-main, 
+.navbar-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  flex-direction: row;/*starts with row, after menu's click change to column*/
+}
+
+.navbar-top {
+  padding: 0 1rem;
+  font-size: 0.7em; /*height is 32px*/
+  justify-content: flex-end;
+}
+
+/* LOGO */
+.navbar-logo {
+  display: inline-block;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  margin-right: 1em;
+  font-size: 1.25em;
+  line-height: inherit;
+  white-space: nowrap;
+  max-width: 120px;
+  /* max-height: 90%; */
+}
+
+/* MENU BUTTON */
+.navbar-toggler {
+  -webkit-appearance: none;
+  border-style: none;
+  background: none;
+  text-align: right;
+  color: var(--purpura);
+  position: relative;
+  cursor: pointer;
+}
+
+.button-x::before {
+  content: '\f00d'; /* X */
+  font-family: var(--font-family-fa5);
+  font-weight: 900;
+  /*opacity: 1;*/
+  position: absolute;
+  top: -5px;
+  right: 21px;
+}
+
+.button-bars::before {
+  content: '\f0c9'; /* 3 bars */
+  font-family: var(--font-family-fa5);
+  font-weight: 900;
+  /*opacity: 1;*/
+  position: absolute;
+  top: -5px;
+  right: 20px;
+}
+
+.button-toggle {
+  opacity: 0;
+  transition: all 1s;
+}
+
+.navbar-logo:hover, .navbar-logo:focus {
+  text-decoration: none;
+}
+
+.nav-menu {
+  opacity: 1;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  padding-bottom: .7em;
+  text-align: center;
+  background-color: rgba(186,207,255,0.9);
+  transition: all .5s;
+}
+
+.nav-menu-hidden {
+  opacity: 0;
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.nav-item a {
+  display: inline-block;
+  padding: 0.5rem 0.5rem;
+}
+
+
+/*************************************
+*** CONTENT 
+*************************************/
+
+/*VERSÍCULOS ALEATORIOS*/
+.divider {
+  position: relative;
+  max-width: 80%;
+  height: 1px;
+  margin: var(--block-spacing) auto;
+  background: 
+    linear-gradient(to right, 
+      rgba(30,87,153,0) 0%, 
+      rgba(137,137,137,1) 30%,
+      rgba(137,137,137,1) 50%,
+      rgba(137,137,137,1) 70%,
+      rgba(125,185,232,0) 100%); 
+}
+
+.verse-link {
+  font-weight: bold;
+  color: var(--purpura);
+}
+
+/*WIDGET INSTAGRAM JUICER*/
+.juicer-feed.loaded {
+  overflow: hidden!important;
+}
+
+.juicer-feed h1.referral {
+  display: none!important;
+}
+
+.btn-follow-instagram {
+  display: inline-block;
+  background-color: var(--purpura);
+  color: var(--cor-clara);
+  border-radius: 1em;
+  padding: .7em .9em;
+  margin-top: .5em;
+  box-shadow: -3px 3px 5px rgba(0, 0, 0, .2);
+  font-size: 12px;
+  transition: all .3s;
+}
+
+.btn-follow-instagram:focus,
+.btn-follow-instagram:hover {
+  background-color: var(--cor-clara);
+  color: var(--purpura-escuro);
+  font-weight: bold;
+}
+
+/*NAO SEI PQ NAO FUNCIONOU */
+/*.btn-follow-instagram::before {
+  content: "\f16d"; 
+  font-family: var(--font-family-fa5)!important;
+  font-weight: 900;
+  font-size: 16px;
+}*/
+
+/*BIBLICAMENTES BOTOES*/
+/*.img-box {
+  width: 100%;
+  height: 249px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wiki-biblia-img {
+  max-width: 80%; /*ficar do tamanho do estudo-biblico.png
+}
+
+.estudo-biblico-div span {
+  font-style: italic;
+}
+
+img.estudo-biblico-img,
+img.wiki-biblia-img {
+  max-height: 90%;
+}*/
+
+
+/*************************************
+*** FOOTER 
+*************************************/
+
+#footer a:hover,
+#footer a:focus {
+  color: var(--branco-hover);
+}
+
+#footer a:hover i,
+#footer a:focus i {
+  /*icon border, also change on hover*/
+  border-color: var(--branco-hover);
+}
+
+#footer {
+	background-color: var(--purpura);
+	color: var(--cor-clara);
+  z-index: 1; /* hide nav-bible */
+}
+
+/* FOOTER TOP */
+
+#footer-top {
+  display: flex;
+  flex-direction: column;
+}
+
+#footer-top {
+  padding-bottom: var(--block-spacing);
+  padding-top: var(--block-spacing);
+}
+
+#footer-top h4 {
+  margin: 0 0 var(--block-spacing) 0;
+}
+
+/* NAVBAR FOOTER */
+
+.navbar-footer {
+  padding: 0;
+}
+
+.navbar-footer .nav-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-footer a {
+  padding-bottom: 2em;
+  display: inline-block;/*tem que ter para funcionar o line-height*/
+  line-height: 1.1;
+}
+
+.navbar-footer em {
+  font-size: small;
+}
+
+.books-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+
+  /*flex: 2;  */
+}
+
+.books-nav > * {
+  flex: 1;
+  /*padding: 0 5px;*/
+}
+
+.old-books h4,
+.new-books h4 {
+  text-align: center;
+}
+
+.books-nav {
+  margin-bottom: var(--block-spacing);
+/*  flex: 1;*/
+}
+
+
+/* FOOTER BOTTOM */
+
+#footer-bottom {
+  text-align: center;
+  padding-bottom: 2.6em;
+  background-color: var(--purpura-escuro);
+}
+
+#footer-bottom div {
+  font-style: italic;
+  /*margin: 0;*/
+}
+
+/*#footer-bottom .nav-items {
+  display: flex;
+  justify-content: center;
+  font-size: 1.7em;
+}*/
+
+/*#footer-bottom .nav-item a {
+  padding-right: 1rem; 
+  padding-left: 1rem;
+}*/
+
+/*#footer-bottom .nav-item a:hover,
+#footer-bottom .nav-item a:focus {
+  color: var(--branco-hover);
+}*/
+
+/* SOCIAL ICONS BOTTOM */
+.nav-social {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.link-social {
+  width: 100%;
+  padding: .5em 0;
+  font-size: 1.2em;
+}
+
+.link-facebook {
+  background-color: #3B5998;
+}
+.link-twitter {
+  background-color: #55ACEE;
+}
+.link-instagram {
+  background-color: #C13584;
+}
+
+.copyright {
+  padding: var(--footer-spacing);
+}
+
+.new-book-links,
+.old-book-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/*BOTÃO LIVROS*/
+.book-btn {
+  /*flex: 1; botoes ficam proporcionais*/
+
+  background-color: #FFFFD4;
+  color: #000000;
+
+  border-bottom: 6px solid #ccccaa;
+  border-radius: 10px;
+
+  display: inline-block;
+  /*align-content: center;*/
+  /*text-align: center;*/
+  text-decoration: none!important;
+
+  /*box-sizing: content-box!important;*/
+
+  margin: 2px 2px;
+  padding: 0px 14px;
+  font-size: 12px;
+  line-height: 24px;
+  /*white-space: nowrap;*/
+
+  -o-transition: top .2s;
+  -ie-transition: top .2s;
+  -moz-transition: top .2s;
+  -webkit-transition: top .2s;
+  transition: top .2s;
+}
+
+.book-btn:hover,
+.book-btn:focus {
+  color: initial!important;
+  position: relative;
+  top: 3px;
+  border-bottom-width: 3px;
+  margin-bottom: calc(2px + 3px); /*2px margin-bottom book-btn + 3px margin-bottom on hover - no hover ele não sobe a página*/
+}
+
+.scroll-top {
+  position: fixed;
+  bottom: 70px;
+  left: 50px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* position: fixed;
+  bottom: 4em;
+  right: 0;  */
+  z-index: 99998; /*back of nav-bible*/
+  transition: all .3s;
+
+  /* padding: 4px 7px;
+  border-radius: 10px 0 0 10px; */
+}
+
+.scroll-top::before {
+  content: "\f106"; /* angle-up */
+  font-family: var(--font-family-fa5);
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.scroll-top.scroll-top-hidden {
+  bottom: 10px; /*padding 10+10px + content 15px + 5px da sombra*/
+  z-index: -1;
+  opacity: 0;
+}
+
+.btn-style-regular {
+  background-color: rgba(125, 185, 232, .7);
+  color: #fff;
+  cursor: pointer;
+  text-shadow: 0 0 3px #000;
+}
+
+.btn-style-regular:hover {
+  background: rgba(125, 185, 232, 1);
+  box-shadow: -3px 3px 5px rgba(0, 0, 0, .2);
+  /*text-shadow: none;*/
+}
+
+
+
+/*************************************
+*** MEDIA QUERIES
+*************************************/
+@media (min-width: 576px) {
+  .container {
+    max-width: 90%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 85%;
+/*    padding-right: 0;
+    padding-left: 0;*/
+  }
+
+  #header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99999;
+    transition: all .3s;
+  }
+
+  #header.header-changed {
+    top: -28px;
+    right: 0;
+  }
+
+  #header-main, 
+  #header-top {
+    position: static;
+  }
+
+  #header-top {
+    display: flex;
+  }
+
+  #content {
+    padding-top: calc(28px + 84px + 1.5rem);/*header-top (28px desktop) + header-main + margin-bottom*/
+  }
+
+  .mobile-menu,
+  .navbar-toggler {
+    display: none;
+  }
+
+  .nav-menu {
+    display: inline-block!important;
+    position: static;
+    width: auto;
+    padding: 0;
+    opacity: 1;
+    background-color: unset;
+  }
+
+  .nav-items {
+    flex-direction: row;
+  }
+
+  #footer-top {
+    flex-direction: row;
+  }
+
+  #footer-top > :first-child {
+    margin-right: var(--block-spacing);
+  }
+
+  .books-nav {
+    flex: 2;
+  }
+
+  .navbar-footer {
+    flex: 1;
+  }
+
+  #footer-bottom {
+    padding: var(--footer-spacing);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-social {
+    position: static;
+    /*display: block;*/
+    margin-bottom: var(--footer-spacing)
+  }
+
+  .link-social {
+    /*display: inline-block;*/
+    font-size: 1.7em;/*27.2px*/
+    padding: 0 .5em;/*13.6px*/
+    /*width: auto;*/
+  }
+
+  .link-facebook,
+  .link-twitter,
+  .link-instagram {
+    background-color: transparent;
+  }
+
+  .copyright {
+    padding: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 80%;
+/*    padding-right: 0;
+    padding-left: 0;*/
+  }
+
+  #content {
+    flex-direction: row;
+  }
+
+  #content > * {
+    flex: 1;
+  }
+
+  /*#content > :nth-child(-n+2) {
+    margin-right: var(--block-spacing);
+  }*/
+  #content > *:not(:last-child) {
+    margin-right: var(--block-spacing);
+  }
+
+  #footer-bottom {
+    padding-right: 10%;
+    padding-left: 10%;
+    /*display: flex;*/
+    flex-direction: row;
+    justify-content: space-between;
+    /*align-items: center;*/
+  }
+
+  .nav-social {
+    order: 1;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 960px;
+/*    padding-right: 0;
+    padding-left: 0;*/
+  }
+
+  #footer-bottom {
+    justify-content: center;
+  }
+
+  .nav-social {
+    order: 1;
+    margin-left: 320px!important;
+  }
+}

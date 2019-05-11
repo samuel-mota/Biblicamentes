@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+#BIBLIA (redireciona KJA sozinho para inicio)
+RewriteBase /
+RewriteRule ^(kja)\/?$ /index.php [NC,L]
+
+#PAGINAS (retira o .php das outras páginas)
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z]+)\/?$ $1.php [NC,L]
+
+#LIVRO (grupo $1 redireciona tudo para biblia.php)
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(kja)\/([A-z0-9]+)\/?$ biblia.php?biblia_versao=$1&livro_slug=$2 [QSA,L]
+
+#CAPÍTULO (grupo $1 redireciona tudo para kja.php)
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(kja)\/([A-z0-9]+)\/([0-9]+)\/?$ biblia.php?biblia_versao=$1&livro_slug=$2&cap=$3 [QSA,L]
+
+ErrorDocument 404 /404.php
+#página não existe, volte ao início ou use nosso sistema de busca
+
+ErrorDocument 500 /500.php
+#tente novamente em alguns segundos
+#OU FAZER COM QUE SE NENHUMA DAS REGRAS FOREM CUMPRIDAS ENVIAR PARA ERRO 404
+</IfModule>
