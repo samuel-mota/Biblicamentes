@@ -1,5 +1,5 @@
 <?php 
-	require_once 'load-classes.php';
+	require_once 'classes/load-classes.php';
 
 	//https://www.w3schools.com/pHP/php_exception.asp
 	//https://www.php.net/manual/en/language.exceptions.php
@@ -39,49 +39,35 @@
 <head>
 	<meta charset="utf-8">
 	<title><?= $book['livro_nome'] ?> * Biblicamentes</title>
+	<link rel="stylesheet" href="/css/styles--estudo.css">
 	
-	<!--device-width = abrir com o tamanho da tela do aparelho; initial-scale=1 = escala padrão 1 do dispositivo-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="BiblicaMentes, ler, meditar, estudar a palavra de Deus.">
-	<meta name="keywords" CONTENT="Biblicamentes, Bíblia, Jesus, Deus">
-	<meta name="author" content="Copyright © 2018 - biblicamentes.com.br">
-	<meta name="robots" CONTENT="index, follow, all">
-	
-	<!-- BEGIN CSS TEMPLATE -->
-	<link rel="icon" href="/favicon.png">
-	<link rel="stylesheet" href="/css/normalize.css">
-	<link rel="stylesheet" href="/css/styles.css">
-	<link rel="stylesheet" href="/css/books.css">
-	<!-- END CSS TEMPLATE -->
-</head>
+<?php 
+	require_once 'html__head.php';
+	require_once 'body__header.php'; 
+?>
 
+<!-- BEGIN CONTENT  -->
 
-<?php require_once 'header.php'; ?>
+	<section class="content l-container">
 
-
-	<div class="scroll-top scroll-top-hidden btn-style-regular"></div>
-
-	<section id="content" class="container">
-
-		<!-- CONTEUDO DO LIVRO  -->
 		<main class="main-content">
 
-		<?php if (!empty($book)):	?>
+		<?php if (!empty($book)):
 
-			<?php
 				//call capitulos.php if both $_GET is set
 				//call livros.php if only livro_slug is set
 				if (isset($_GET['livro_slug']) && isset($_GET['cap'])):
 
-					require_once 'capitulos.php';
+					require_once 'kja/capitulos.php';
 
 				elseif (isset($_GET['livro_slug']) && !isset($_GET['cap'])):
 
-					require_once 'livros-intro.php';
+					require_once 'kja/livros-intro.php';
 
 				endif;
 			
-			else:	?>
+			else:	
+			?>
 
 			<tr class="linha-conteudo">
 				<td class="linha-conteudo-texto">Livro Inexistente. Use o menu e navegue entre os livros.</td>
@@ -93,9 +79,7 @@
 
 		<?php if (!empty($book)):	?>
 
-		<div id="modal-bg" style="display: none;"></div>
-
-		<aside id="nav-bible">
+		<aside class="nav-bible js-modal-aside">
 			<button type="button" class="modal-btn capitulos-btn btn-style-regular">Capítulos</button>
 			<div class="nav-bible-wrapper">
 				<div class="nav-chapters">
@@ -183,9 +167,15 @@
 	?>
 
 	
-		<a id="chapter-nav-left" class="btn-style-regular" href="/kja/<?= $prevBook ?>/<?= $prevCap ?>" title="<?php echo $prevBookName . " " . ($prevCap == "" ? "intro" : $prevCap); ?>"></a>
+		<a class="chapter-nav chapter-nav--left js-chapter-nav--left has-tooltip--toright" aria-label="<?php echo $prevBookName . " " . ($prevCap == "" ? "intro" : $prevCap); ?>" href="/kja/<?= $prevBook ?>/<?= $prevCap ?>">
+			<i class="fas fa-angle-left fa-2x"></i>
+			<div class="btn-style-regular"></div>
+		</a>
 
-		<a id="chapter-nav-right" class="btn-style-regular" href="/kja/<?= $nextBook ?>/<?= $nextCap ?>" title="<?php echo $nextBookName . " " . ($nextCap == "" ? "intro" : $nextCap); ?>"></a>
+		<a class="chapter-nav chapter-nav--right js-chapter-nav--right has-tooltip--toleft" aria-label="<?php echo $nextBookName . " " . ($nextCap == "" ? "intro" : $nextCap); ?>" href="/kja/<?= $nextBook ?>/<?= $nextCap ?>">
+			<i class="fas fa-angle-right fa-2x"></i>
+			<div class="btn-style-regular"></div>
+		</a>
 
 
 	<?php 
@@ -194,7 +184,4 @@
 		endif; //!empty $book	
 	?>
 
-	<div class="divider-bar"></div>
-
-
-<?php require_once 'footer.php' ?>
+<?php require_once 'body__footer.php' ?>

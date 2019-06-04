@@ -1,3 +1,6 @@
+/*************************************
+*** BASE STYLES
+*************************************/
 /* --font-family-sans-serif: "Open Sans", Arial, sans-serif; */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono|Kaushan+Script|Noto+Serif");
 @import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css");
@@ -1047,4 +1050,227 @@ img {
   font-style: italic;
   margin: auto;
 }
-/*# sourceMappingURL=styles.css.map */
+
+.is-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+@media (min-width: 768px) {
+  .is-sticky {
+    top: 100px;
+  }
+}
+
+.entry-title-wrapper {
+  background-color: rgba(186, 207, 255, 0.9);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+@media (min-width: 768px) {
+  .entry-title-wrapper {
+    background-color: unset;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+}
+
+.entry-title {
+  font-family: "Kaushan Script", cursive;
+  color: #212529;
+  font-size: 1.5em;
+  margin-right: 0.67em;
+  margin-left: 0.67em;
+}
+
+@media (min-width: 768px) {
+  .entry-title {
+    direction: rtl;
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+    margin-right: 0;
+    margin-left: 0;
+    width: 25px;
+    height: auto;
+    margin: 0;
+    white-space: nowrap;
+  }
+}
+
+/*.entry-title-placeholder {
+	margin: 0;
+	padding: 0;
+	width: 0;
+	height: 0;
+}*/
+/*.is-active {
+	height: calc(36px + 21.44px + 21.44px); padding + margin do h1
+	display: block;
+	/*padding: 100px;
+	width: 100%;
+}*/
+.content {
+  text-align: left;
+}
+
+.content > * {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+aside.nav-bible {
+  position: fixed;
+  top: 110px;
+  right: -290px;
+  width: 290px;
+  background-color: rgba(125, 185, 232, 0.7);
+  border-bottom-left-radius: 10px;
+  padding: .7em .5em;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+aside.nav-bible-slide-in {
+  right: 0 !important;
+  /* id takes precedence, use !important to override */
+}
+
+.capitulos-btn {
+  top: 29px;
+  left: -55px;
+}
+
+@-webkit-keyframes fading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*aside.nav-bible:focus,
+aside.nav-bible:hover {
+	right: 0;
+}*/
+.nav-bible-wrapper {
+  overflow: auto;
+  height: calc(100vh - (110px + (0.7rem * 2) + 3px));
+  /*subtract 110px of .nav-bible top & .7em padding top/bottom & few pixels to not touch the bottom*/
+  text-align: center;
+}
+
+.nav-bible-wrapper .nav-chapters h3 {
+  margin-top: 0;
+}
+
+.nav-bible-wrapper h3 {
+  margin-bottom: 0;
+}
+
+.entry-content {
+  min-height: calc(100vh - (110px + (0.7rem * 2) + 3px));
+  /*subtract 110px of .nav-bible top & .7em padding top/bottom & few pixels to not touch the bottom*/
+}
+
+.linha-mais-info td {
+  font-size: small;
+  padding: 10px;
+  font-style: italic;
+  background-color: #fafad2;
+  border-radius: 15px;
+  /* border: 1px solid black; */
+}
+
+.linha-titulo td {
+  padding: 10px;
+  font-style: italic;
+}
+
+.linha-titulo td h3,
+.linha-titulo td h4 {
+  margin: 0;
+}
+
+.tabela-versiculos,
+.tabela-livro-intro {
+  font-family: var(--font-family-serif);
+}
+
+.tabela-versiculos .linha-conteudo td,
+.tabela-livro-intro .linha-conteudo td {
+  line-height: 1.7;
+}
+
+.linha-conteudo-ver {
+  position: relative;
+  top: 2px;
+  vertical-align: baseline;
+  text-align: right;
+  font-weight: bold;
+  font-size: small;
+  color: #a9a9a9;
+}
+
+.linha-conteudo-refcruzada {
+  font-family: var(--font-family-sans-serif);
+  font-size: small;
+  font-weight: bold;
+  font-style: italic;
+  color: #a9a9a9;
+}
+
+.linha-conteudo-refcruzada a {
+  white-space: nowrap;
+}
+
+.breadcrumb-meta {
+  margin-top: 0;
+}
+
+.main-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.biblia-copyright td {
+  border: 1px solid rgba(172, 175, 33, 0.35);
+  font-style: italic;
+  font-size: small;
+  text-align: center;
+  border-radius: 18px;
+  margin: 86px;
+  font-family: var(--font-family-sans-serif);
+}
+/*# sourceMappingURL=styles--estudo.css.map */

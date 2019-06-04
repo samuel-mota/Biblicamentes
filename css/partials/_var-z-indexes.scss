@@ -1,0 +1,28 @@
+//https://www.sitepoint.com/using-sass-maps/
+
+$z-index: (
+  underground: -100,
+  default: auto,
+  surface: 100, // footer, divider-bar
+  //overlay: 4000,
+  high-level: 5000, // fixed buttons // tooltip +1
+  skyscraper: 9999 // modal // modal-bg -1
+);
+
+@function z($key) {
+  @if map-has-key($z-index, $key) {
+    @return map-get($z-index, $key);
+  }
+
+  @warn "Unknown '#{$key}' in $z-index.";
+  @return null;
+}
+
+//example
+// .overlay {
+//   z-index: z(overlay);
+// }
+
+// .element {
+//   z-index: (z(default) + 1);
+// }

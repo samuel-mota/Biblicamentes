@@ -1,0 +1,105 @@
+//****************
+// FOOTER
+//****************
+.footer {
+  display: flex;
+  flex-direction: column;
+
+  background-color: $purpura;
+  color: $branco;
+
+  z-index: z(surface);
+
+  &__link {
+    padding-bottom: 2em;
+    display: inline-block; //para funcionar o line-height
+    line-height: 1.1;
+  }
+
+  &__link:hover,
+  &__link:focus {
+    color: $branco-hover;
+  }
+
+  &__link:hover i,
+  &__link:focus i {
+    border-color: $branco-hover;
+  }
+}
+
+//****************
+// FOOTER TOP
+//****************
+.footer__top {
+  display: flex;
+  flex-direction: column;
+
+  &--nav {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  
+    & em {
+      font-size: small;
+    }
+  }
+}
+
+.books-bible {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin-bottom: $block-spacing;
+
+  &__title {
+    margin: $block-spacing 0;
+    text-align: center;
+  }
+
+  &__old,
+  &__new {
+    flex: 1;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+
+//****************
+// FOOTER BOTTOM
+//****************
+.footer__bottom {
+  text-align: center;
+  background-color: $purpura-dark;
+  padding: 0 0 $footer-spacing 0;
+
+  &--wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+  }
+
+  &--social {
+    order: 1;
+    margin: $footer-spacing auto;
+  }
+
+  &--social-link {
+    font-size: 2em;
+    margin: 0 5px;
+    
+    &:hover {
+      color: $branco-hover;
+    }
+  }
+}
+
+.copyright {
+  font-style: italic;
+  margin: auto;
+}

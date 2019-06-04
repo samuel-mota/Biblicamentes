@@ -1,0 +1,28 @@
+// variables
+@import 'partials/var-breakpoints';
+@import 'partials/var-colors'; 
+@import 'partials/var-icons'; 
+@import 'partials/var-typography';
+@import 'partials/var-z-indexes';
+
+// mixins, media queries 
+@import 'partials/mixins';
+
+// reset & base
+@import 'partials/normalize';
+@import 'partials/helper';
+@import 'partials/base';
+
+// objects
+@import 'partials/obj-buttons';
+@import 'partials/obj-modal';
+@import 'partials/obj-tooltips';
+
+// header
+@import 'partials/header';
+
+// content
+@import 'partials/content';
+
+// footer
+@import 'partials/footer';

@@ -1,0 +1,14 @@
+//breakpoints
+//https://sass-lang.com/documentation/values/maps#look-up-a-value
+
+//$font-weights: ("regular": 400, "medium": 500, "bold": 700);
+//@debug map-get($font-weights, "medium"); // 500
+//@debug map-get($font-weights, "extra-bold"); // null
+
+$breakpoints: (
+  start: 0,
+  small: 576px,
+  medium: 768px,
+  large: 992px,
+  wide: 1200px,
+);

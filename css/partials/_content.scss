@@ -1,0 +1,38 @@
+//*************** 
+// CONTENT HOME PAGE
+//***************
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 63px; 
+  text-align: center;
+
+  // VERSÍCULOS ALEATORIOS
+  &__instagram-feed,
+  &__random-verse1,
+  &__random-verse2 {
+    margin: $block-spacing 0;
+  }
+
+  &__random-verse-link {
+    font-weight: bold;
+    color: $purpura;
+  }
+
+  @include media-medium {
+    //sass doesn't sum px and rem
+    padding-top: calc(28px + 82px + 1.5rem); 
+    //header-top (28px desktop) + header-main + margin-bottom
+  }
+}
+
+//************************
+// WIDGET INSTAGRAM JUICER
+//************************
+.juicer-feed.loaded {
+  overflow: hidden !important;
+}
+
+.juicer-feed h1.referral {
+  display: none !important;
+}

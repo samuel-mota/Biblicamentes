@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
 
-#BIBLIA (redireciona KJA sozinho para inicio)
+#BIBLIA (redireciona /kja/ para inicio)
 RewriteBase /
 RewriteRule ^(kja)\/?$ /index.php [NC,L]
 

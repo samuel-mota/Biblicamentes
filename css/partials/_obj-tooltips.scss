@@ -1,0 +1,123 @@
+//**********
+// TOOLTIPS
+//**********
+$offset: 8px;
+
+%hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease-in-out;
+}
+
+%visible {
+  visibility: visible;
+  opacity: 1; 
+}
+
+// TOOLTIP STANDARD
+%tooltip {
+  &::before {
+    content: "";
+    position: absolute;
+    border: 7px solid transparent;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    @extend %hidden;
+  }
+
+  &::after {
+    content: attr(aria-label);
+    position: absolute;
+    
+    text-shadow: 1px 1px 0 #000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+
+    color: $branco;
+    padding: 12px 14px;
+    border-radius: 7px;
+    font-size: 12px;
+    line-height: 12px;
+    white-space: nowrap; 
+
+    @extend %hidden;
+  }
+
+  &:hover,
+  &:focus {
+    z-index: z(high-level) +1;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    content: "";
+    top: 50%;
+    transform: translateY(-50%);
+
+    @extend %visible;
+  }
+
+  &:hover::after,
+  &:focus::after {
+    content: attr(aria-label);
+    background-color: $info;
+
+    @extend %visible;
+  }
+}
+
+// TOOLTIP TO RIGHT
+.has-tooltip--toright[aria-label] {
+  //position: relative;
+  @extend %tooltip;
+
+  &::before {
+    border-right-color: $info;
+    right: 0;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    right: -$offset; // translateX(8px) on hover
+  }
+
+  &::after {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+  }
+
+  &:hover::after,
+  &:focus::after {
+    transform: translate($offset, -50%);
+  }
+}
+
+// TOOLTIP TO LEFT
+.has-tooltip--toleft[aria-label] {
+  //position: relative;
+  @extend %tooltip;
+
+  &::before {
+    border-left-color: $info;
+    left: 0;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    left: -$offset; // translateX(8px) on hover
+  }
+
+  &::after {
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+  }
+
+  &:hover::after,
+  &:focus::after {
+    transform: translate(-$offset, -50%);
+  }
+}

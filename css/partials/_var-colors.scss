@@ -1,0 +1,41 @@
+//colors
+//https://sass-lang.com/documentation/values/maps#look-up-a-value
+
+//$font-weights: ("regular": 400, "medium": 500, "bold": 700);
+//@debug map-get($font-weights, "medium"); // 500
+//@debug map-get($font-weights, "extra-bold"); // null
+
+// better use 'scale-color' than 'lighten' or 'darken'
+//https://sass-lang.com/documentation/functions/color#scale-color
+//scale-color(#e1d7d2, $lightness: 30%); //LIGHTEN
+//scale-color(#e1d7d2, $lightness: -30%); //DARKEN
+
+$purpura: #800080;
+$purpura-light: scale-color($purpura, $lightness: 20%);
+$purpura-dark: scale-color($purpura, $lightness: -20%);
+$carmesim: #dc143c;
+$branco: #f8f9fa;
+$branco-hover: scale-color($branco, $lightness: -20%);
+$preto: #212529;
+$azul: #7db9e8; // rgb(125, 185, 232)
+$azul-dark: scale-color($azul, -20%);
+$azul-darken: darken($azul, 30%);
+$azul-bg: rgba(186, 207, 255, 0.9);
+$info: #304f50; //cadetblue
+
+
+// --azul: #00f;
+// --branco: #fff;
+// --branco-hover: hsl(0, 0%, 80%);
+// --preto: #000;
+
+// --gray: #6c757d;
+// --gray-dark: #343a40;
+// --primary: #007bff;
+// --secondary: #6c757d;
+// --success: #28a745;
+// --info: #17a2b8;
+// --warning: #ffc107;
+// --danger: #dc3545;
+// --light: #f8f9fa;
+// --dark: #343a40;

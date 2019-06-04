@@ -1,0 +1,18 @@
+  /* --font-family-sans-serif: "Open Sans", Arial, sans-serif; */
+
+$font-family: (
+  sans-serif: ("Open Sans", Arial, sans-serif),
+  serif: ("Noto Serif", "Times New Roman", serif),
+  main-titles: ("Kaushan Script", cursive),
+  monospace: ("Roboto Mono", "Courier New", monospace),
+  fa5: ("Font Awesome 5 Free"),
+);
+
+@function ffamily($key) {
+  @if map-has-key($font-family, $key) {
+    @return map-get($font-family, $key);
+  }
+
+  @warn "Unknown '#{$key}' in $font-family.";
+  @return null;
+}
