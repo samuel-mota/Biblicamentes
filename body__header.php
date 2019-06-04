@@ -3,7 +3,7 @@
 	<header class="header js-modal-header">
 		<div class="header--top">
 			<div class="navbar--top l-container">
-				<!-- SOCIAL ICONS -->
+			<!-- MENU TOP -->
 				<ul class="nav-items">
 					<li class="nav-item">
 						<a href="https://www.facebook.com/biblicamentes" class="nav-link js-external-link"><i class="fab fa-facebook-f"></i></a>
@@ -14,7 +14,6 @@
 					<li class="nav-item">
 						<a href="https://www.instagram.com/biblicamentes" class="nav-link js-external-link"><i class="fab fa-instagram"></i></a>
 					</li>
-					<!-- MENU TOP -->
 					<li class="nav-item">
 						<a href="/contribua" class="nav-link">Contribua <i class="fas fa-donate"></i></a>
 					</li>
@@ -71,7 +70,7 @@
 				</div>
 
 				<!-- MENU DESKTOP -->
-				<div class="navbar--desktop js-desktop-menu is-hidden">
+				<div class="navbar--desktop js-desktop-menu">
 					<ul class="nav-items">
 						<li class="nav-item">
 							<a href="/" class="nav-link">Início</a>

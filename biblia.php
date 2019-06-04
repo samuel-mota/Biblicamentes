@@ -184,4 +184,6 @@
 		endif; //!empty $book	
 	?>
 
+	<!-- END CONTENT  -->
+
 <?php require_once 'body__footer.php' ?>

@@ -19,7 +19,7 @@
     color: $purpura;
   }
 
-  @include media-medium {
+  @include media(medium) {
     //sass doesn't sum px and rem
     padding-top: calc(28px + 82px + 1.5rem); 
     //header-top (28px desktop) + header-main + margin-bottom

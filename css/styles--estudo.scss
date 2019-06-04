@@ -9,7 +9,7 @@
   position: sticky;
   top: 0;
 
-  @include media-medium {
+  @include media(medium) {
     top: 100px;
   }
 }
@@ -19,7 +19,7 @@
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 
-  @include media-medium {
+  @include media(medium) {
     background-color: unset;
     margin-right: 10px;
     margin-top: 10px;
@@ -33,7 +33,7 @@
   margin-right: 0.67em; //h1 padrao = 0
   margin-left: 0.67em; //h1 padrao = 0
 
-  @include media-medium {
+  @include media(medium) {
     direction: rtl;
     transform: rotate(270deg);
 
@@ -179,7 +179,7 @@ aside.nav-bible:hover {
   align-items: flex-start;
   flex-direction: column;
 
-  @include media-medium {
+  @include media(medium) {
     flex-direction: row;
   }
 }
@@ -191,13 +191,5 @@ aside.nav-bible:hover {
   text-align: center;
   border-radius: 18px;
   margin: 86px;
-  font-family: var(--font-family-sans-serif);
-}
-
-@media (min-width: 576px) {
-
-}
-
-@media (min-width: 768px) {
-
+  font-family: ffamily(sans-serif);
 }

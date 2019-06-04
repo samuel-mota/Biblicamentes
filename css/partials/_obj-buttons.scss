@@ -85,7 +85,7 @@ $bh: $h / 5; //bars height
     transform: rotate(45deg);
   }
 
-  @include media-medium {
+  @include media(medium) {
     & {
       display: none;
     }
@@ -164,7 +164,7 @@ $bh: $h / 5; //bars height
     z-index: z(underground);
   }
 
-  @include media-medium {
+  @include media(medium) {
     position: fixed;
     bottom: 70px;
     left: 50px;
@@ -203,7 +203,7 @@ $bh: $h / 5; //bars height
   }
 
   // DESKTOP
-  @include media-medium {
+  @include media(medium) {
     position: fixed;
     bottom: 10px;
     border-radius: 50%;

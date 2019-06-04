@@ -1,8 +1,6 @@
-// FONTS
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono|Kaushan+Script|Noto+Serif");
-@import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css");
-
-/* GENERAL SETUP */
+//**************
+// GENERAL SETUP
+//**************
 *,
 *::before,
 *::after {
@@ -10,11 +8,11 @@
 }
 
 html {
-  font-family: sans-serif;
+  font-family: sans-serif; 
 }
 
 body {
-  font-family: map-get($font-family, 'sans-serif');
+  font-family: ffamily('sans-serif');
   color: $preto;
   background-color: $branco;
 }
@@ -38,8 +36,7 @@ a {
   text-decoration: none;
 }
 
-a:hover,
-a:focus {
+a:hover:focus {
   color: $purpura-light;
 }
 
@@ -51,11 +48,12 @@ img {
   height: auto;
 }
 
-/*************************************
-*** SITE STRUCTURE 
-*************************************/
+//********************
+// SITE STRUCTURE 
+//********************
 
-/* MAIN BLOCKS */
+// MAIN BLOCKS
+
 .body {
   display: flex;
   flex-direction: column;

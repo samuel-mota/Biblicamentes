@@ -40,24 +40,24 @@ $footer-spacing: 15px;
   margin-left: auto;
   position: relative;
 
-  @include media-small {
+  @include media(small) {
     & {
       max-width: 90%;
       padding-right: 0;
       padding-left: 0;
     }    
   }
-  @include media-medium {
+  @include media(medium) {
     & {
       max-width: 85%;
     }
   }
-  @include media-large {
+  @include media(large) {
     & {
       max-width: 80%;
     }
   }
-  @include media-wide {
+  @include media(wide) {
     & {
       max-width: 960px;
     }

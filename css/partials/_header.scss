@@ -2,7 +2,7 @@
   position: relative;
   z-index: z(high-level);
 
-  @include media-medium {
+  @include media(medium) {
     & {
       position: fixed;
       top: 0;
@@ -25,7 +25,7 @@
   color: $purpura;
   background-color: rgba(186, 207, 255, 0.9);
 
-  @include media-medium {
+  @include media(medium) {
     & {
       position: static;
     }
@@ -40,7 +40,7 @@
     color: $branco-hover;
   }
 
-  @include media-medium {
+  @include media(medium) {
     & {
       display: flex;
       //position: static;
@@ -82,13 +82,21 @@
   max-width: 120px;
   /* max-height: 90%; */
 
-  &:hover,
-  &:focus {
+  &:hover:focus {
     text-decoration: none;
   }
 }
 
+.navbar--desktop {
+  display: none;
+
+  @include media(medium) {
+    display: block;
+  }
+}
+
 .navbar--mobile {
+  //display: block;
   opacity: 0;
   position: absolute;
   top: 63px; 
@@ -115,8 +123,7 @@
       //padding: 0.4em 0;
       font-size: 1.2em;
 
-      &:hover,
-      &:focus {
+      &:hover:focus {
         color: $branco-hover;
       }
       &.nav-link--facebook {
@@ -131,19 +138,16 @@
     }
   }
 
-  @include media-medium {
-    .is-mobile-only {
+  @include media(medium) {
+    // & {
       display: none;
-    }
-    & {
-      display: initial !important;
-      position: initial !important;
-      transform: translateY(0);
-      width: auto;
-      background-color: unset;
-      padding: 0;
-      opacity: 1;
-    }
+      // position: initial !important;
+      // transform: translateY(0);
+      // width: auto;
+      // background-color: unset;
+      // padding: 0;
+      // opacity: 1;
+    // }
   }
 }
 
@@ -159,7 +163,7 @@
     padding: 0.5rem 0.5rem;
   }
 
-  @include media-medium {
+  @include media(medium) {
     & {
       flex-direction: row;
     }
