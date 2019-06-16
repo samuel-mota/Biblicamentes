@@ -1,6 +1,8 @@
 //*****************
-// GLOBAL BUTTON
+// PLACEHOLDERS & VARIABLES
 //*****************
+$side-limit: 0.4em;
+
 %btn-appearance {
   -webkit-appearance: none;
   border-style: none;
@@ -17,13 +19,8 @@
   &:hover {
     background-color: $azul;
     box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.2);
-    /*text-shadow: none;*/
   }
 }
-
-// %btn-layout-mobile {
-
-// }
 
 //*****************
 // NAVBAR MOBILE MENU BUTTON
@@ -93,7 +90,7 @@ $bh: $h / 5; //bars height
 }
 
 //*****************
-// BOOK'S NAME BUTTON
+// BOOK'S NAME & CHAPTERS BUTTON
 //*****************
 %books-btn-hover {
   position: relative;
@@ -103,7 +100,7 @@ $bh: $h / 5; //bars height
   //2px margin-bottom books-bible__btn + 3px margin-bottom on hover - no hover ele não sobe a página
 }
 
-.books-bible__btn {
+.bible__main-btn {
   @extend %btn-appearance;
 
   background-color: #ffffd4;
@@ -133,6 +130,30 @@ $bh: $h / 5; //bars height
   cursor: default;
   background-color: #ffff00;
   border-bottom-color: #ada925;
+}
+
+//*****************
+// ASIDE MODAL BUTTON
+//*****************
+// modal-btn capitulos-btn btn-style-regular TINHA ESSAS CLASSES
+.aside-nav__button {
+  @extend %btn-appearance;
+  @extend %btn-layout;
+
+  position: absolute;
+  top: 29px;
+  left: -55px;
+
+  font-family: inherit;
+  direction: rtl;
+  transform: rotate(270deg);
+  white-space: nowrap;
+  padding: 4px 7px;
+  border-radius: 10px 10px 0 0;
+
+  @include media(medium) {
+    display: none;
+  }
 }
 
 
@@ -167,7 +188,8 @@ $bh: $h / 5; //bars height
   @include media(medium) {
     position: fixed;
     bottom: 70px;
-    left: 50px;
+    left: $side-limit;
+
     border-radius: 50%;
     height: 50px;
     width: 50px;
@@ -215,11 +237,11 @@ $bh: $h / 5; //bars height
     align-items: center;
 
     &--right {
-      right: 50px;
+      right: $side-limit;
     }
   
     &--left {
-      left: 50px;
+      left: $side-limit;
     }
   }
 }
@@ -227,7 +249,7 @@ $bh: $h / 5; //bars height
 //*****************
 // FOLLOW INSTAGRAM BUTTON
 //*****************
-.btn-follow-instagram {
+.instagram-follow-btn {
   display: inline-block;
   background-color: $purpura;
   color: $branco;
@@ -237,30 +259,11 @@ $bh: $h / 5; //bars height
   box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.2);
   font-size: 12px;
   transition: all 0.3s;
-}
 
-.btn-follow-instagram:focus,
-.btn-follow-instagram:hover {
-  background-color: $branco;
-  color: $purpura-dark;
-  font-weight: bold;
-}
-
-
-//*****************
-// NAVIGATION CHAPTERS BUTTON
-//*****************
-.modal-btn { // MUDAR O NOME PARA NAV BIBLE ALGUMA COISA
-  font-family: inherit;
-
-  direction: rtl;
-	transform: rotate(270deg);
-  white-space: nowrap;
-  position: absolute;
-  
-  padding: 4px 7px;
-  border-radius: 10px 10px 0 0;
-
-  -webkit-appearance: none;
-  border: none;
+  &:focus,
+  &:hover {
+    background-color: $branco;
+    color: $purpura-dark;
+    font-weight: bold;
+  }
 }

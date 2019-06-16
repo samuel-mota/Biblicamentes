@@ -4,9 +4,9 @@ $z-index: (
   underground: -100,
   default: auto,
   surface: 100, // footer, divider-bar
-  //overlay: 4000,
-  high-level: 5000, // fixed buttons // tooltip +1
-  skyscraper: 9999 // modal // modal-bg -1
+  high-level: 200, // fixed buttons // tooltip +1
+  overlay: 300, // header
+  skyscraper: 999 // modal // modal-bg -1
 );
 
 @function z($key) {

@@ -1,0 +1,41 @@
+//********************
+// LINKS GLOBAL
+//********************
+
+%link-bold--main{
+  & a {
+    color: $purpura;
+    font-weight: bold;
+
+    &:hover,
+    &:focus {
+      color: $purpura-light;
+    }
+  }
+}
+
+%link-bold--muted{
+  & a {
+    color: $text-muted;
+    font-weight: bold;
+
+    &:hover,
+    &:focus {
+      color: $text-muted-dark;
+    }
+  }
+}
+
+//for cross references
+%link-bold--muted-v2{
+  & a {
+    color: $text-muted;
+    font-weight: bold;
+    white-space: nowrap;
+
+    &:hover,
+    &:focus {
+      color: $purpura;
+    }
+  }
+}

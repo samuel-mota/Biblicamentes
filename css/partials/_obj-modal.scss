@@ -18,3 +18,8 @@
   background-color: rgba(0,0,0,.4);
   animation: fading .5s;
 }
+
+@keyframes fading {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}

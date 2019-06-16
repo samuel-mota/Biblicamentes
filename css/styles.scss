@@ -5,7 +5,7 @@
 @import 'partials/var-typography';
 @import 'partials/var-z-indexes';
 
-// mixins, media queries 
+// sass useful
 @import 'partials/mixins';
 
 // reset & base
@@ -15,7 +15,9 @@
 
 // objects
 @import 'partials/obj-buttons';
+@import 'partials/obj-links';
 @import 'partials/obj-modal';
+@import 'partials/obj-scrollbar';
 @import 'partials/obj-tooltips';
 
 // header

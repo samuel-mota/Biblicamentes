@@ -47,10 +47,9 @@
 ?>
 
 <!-- BEGIN CONTENT  -->
+	<section class="content content--row l-container">
 
-	<section class="content l-container">
-
-		<main class="main-content">
+		<main class="content__main">
 
 		<?php if (!empty($book)):
 
@@ -69,9 +68,9 @@
 			else:	
 			?>
 
-			<tr class="linha-conteudo">
-				<td class="linha-conteudo-texto">Livro Inexistente. Use o menu e navegue entre os livros.</td>
-			</tr>
+			<div class="content__error">
+				Livro Inexistente. Use o menu e navegue entre os livros.
+			</div>
 
 			<?php endif; //!empty $book ?>
 
@@ -79,35 +78,40 @@
 
 		<?php if (!empty($book)):	?>
 
-		<aside class="nav-bible js-modal-aside">
-			<button type="button" class="modal-btn capitulos-btn btn-style-regular">Capítulos</button>
-			<div class="nav-bible-wrapper">
-				<div class="nav-chapters">
-					<!-- CURRENT BOOK -->
-					<h3><a class="book-btn" href="/kja/<?= $previousAndNext[2]['livro_slug'] ?>">Introdução <?= $previousAndNext[2]['livro_nome'] ?></a></h3>
+		<aside class="aside-nav js-aside-modal">
+			
+			<button type="button" class="aside-nav__button js-aside-button" aria-label="Navegar nos Capítulos e Livros">Capítulos</button>
 
-					<?php for ($i = 1; $i < $book['total_capitulos'] + 1; $i++): ?>
+			<div class="aside-nav__bible">
+				<div class="aside-nav__bible--chapters">
+					
+					<!-- CURRENT BOOK -->
+					<h3 class="aside-nav__bible--intro"><a class="bible__main-btn" href="/kja/<?= $previousAndNext[2]['livro_slug'] ?>">Introdução <?= $previousAndNext[2]['livro_nome'] ?></a></h3>
+
+					<!-- BOOK CHAPTERS -->
+					<?php for ($i = 1; $i < $book['total_capitulos'] + 1; $i++): 
+					?>
 						
-						<a class="book-btn" href="/kja/<?= $book['livro_slug'] ?>/<?= $i ?>"><?= $i ?></a>
+						<a class="bible__main-btn" href="/kja/<?= $book['livro_slug'] ?>/<?= $i ?>"><?= $i ?></a>
 						
 					<?php endfor; ?>
 
 				</div>
 
-				<div class="nav-books">
-					<p>
+				<div class="aside-nav__bible--books">
+
 					<!-- PREVIOUS BOOK -->
-						<a class="book-btn" href="/kja/<?= $previousAndNext[0]['livro_slug'] ?>"><i class="fas fa-chevron-left"></i> <?= $previousAndNext[0]['livro_nome'] ?></a>
+					<a class="bible__main-btn" href="/kja/<?= $previousAndNext[0]['livro_slug'] ?>"><i class="fas fa-chevron-left"></i> Intro <?= $previousAndNext[0]['livro_nome'] ?></a>
+
 					<!-- NEXT BOOK -->
-						<a class="book-btn" href="/kja/<?= $previousAndNext[1]['livro_slug'] ?>"><?= $previousAndNext[1]['livro_nome'] ?> <i class="fas fa-chevron-right"></i></a>
-					</p>
+					<a class="bible__main-btn" href="/kja/<?= $previousAndNext[1]['livro_slug'] ?>">Intro <?= $previousAndNext[1]['livro_nome'] ?> <i class="fas fa-chevron-right"></i></a>
 				</div>
 			</div>
 		</aside>
 	</section> 
 
 
-	<?php //previous and next buttons
+	<?php // PREVIOUS & NEXT CHAPTERS
 		$totalCapsCurr = $book['total_capitulos'];
 		
 		if ((isset($livroSlugCurr) && !isset($cap)) || ($cap > 0 && $cap <= $totalCapsCurr)):
@@ -169,12 +173,10 @@
 	
 		<a class="chapter-nav chapter-nav--left js-chapter-nav--left has-tooltip--toright" aria-label="<?php echo $prevBookName . " " . ($prevCap == "" ? "intro" : $prevCap); ?>" href="/kja/<?= $prevBook ?>/<?= $prevCap ?>">
 			<i class="fas fa-angle-left fa-2x"></i>
-			<div class="btn-style-regular"></div>
 		</a>
 
 		<a class="chapter-nav chapter-nav--right js-chapter-nav--right has-tooltip--toleft" aria-label="<?php echo $nextBookName . " " . ($nextCap == "" ? "intro" : $nextCap); ?>" href="/kja/<?= $nextBook ?>/<?= $nextCap ?>">
 			<i class="fas fa-angle-right fa-2x"></i>
-			<div class="btn-style-regular"></div>
 		</a>
 
 

@@ -1,11 +1,11 @@
 //******************
 // ASIDE MENU NAVIGATION
 //******************
-const capitulosBtn = document.querySelector('.capitulos-btn');
-const modalAside = document.querySelector('.js-modal-aside');
+const capitulosBtn = document.querySelector('.js-aside-button');
+const modalAside = document.querySelector('.js-aside-modal');
 
 capitulosBtn.addEventListener('click', () => {
-  modalAside.classList.toggle('nav-bible-slide-in');
+  modalAside.classList.toggle('is-aside-nav--open');
   modalAside.classList.toggle('is-modal');
 
   modalBgToggle();

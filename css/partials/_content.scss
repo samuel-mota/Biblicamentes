@@ -7,11 +7,10 @@
   padding-top: 63px; 
   text-align: center;
 
-  // VERSÍCULOS ALEATORIOS
   &__instagram-feed,
   &__random-verse1,
   &__random-verse2 {
-    margin: $block-spacing 0;
+    margin: $block-spacing;
   }
 
   &__random-verse-link {
@@ -24,6 +23,13 @@
     padding-top: calc(28px + 82px + 1.5rem); 
     //header-top (28px desktop) + header-main + margin-bottom
   }
+
+  &--row {
+  @include media(large) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  }
 }
 
 //************************
@@ -35,4 +41,12 @@
 
 .juicer-feed h1.referral {
   display: none !important;
+}
+
+.juicer-feed {
+  @include media(large) {
+    max-width: 500px!important;
+    max-height: 300px!important;
+    min-width: 300px;
+  }
 }

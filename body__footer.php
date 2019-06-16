@@ -24,14 +24,14 @@
 	
 	<footer class="footer">
 		<section class="footer__top l-container" >
-			<article class="books-bible">
+			<div class="books-bible">
 				<div class="books-bible__old">
 					<h4 class="books-bible__title">Velho Testamento</h4>
 					<div class="books-bible__buttons">
 
 	 					<?php foreach ($booksOld as $bookOld): ?>
 
-							<a class="books-bible__btn" href="/kja/<?= $bookOld['livro_slug'] ?>"><?= $bookOld['livro_nome'] ?></a>
+							<a class="bible__main-btn" href="/kja/<?= $bookOld['livro_slug'] ?>"><?= $bookOld['livro_nome'] ?></a>
 
 						<?php endforeach; ?>
 
@@ -43,13 +43,13 @@
 					
 						<?php foreach ($booksNew as $bookNew): ?>
 
-							<a class="books-bible__btn" href="/kja/<?= $bookNew['livro_slug'] ?>"><?= $bookNew['livro_nome'] ?></a>
+							<a class="bible__main-btn" href="/kja/<?= $bookNew['livro_slug'] ?>"><?= $bookNew['livro_nome'] ?></a>
 
 						<?php endforeach; ?>
 
 					</div>
 				</div>
-			</article>
+			</div>
 
 			<div class="footer__top--nav">
 				<a class="footer__link" href="/kja/gen/">
@@ -76,7 +76,7 @@
 			</div>
 		</section>
 
-		<div class="footer__bottom">
+		<section class="footer__bottom">
 			<div class="footer__bottom--wrap l-container">
 				<div class="footer__bottom--social">
 					<a class="footer__bottom--social-link footer__bottom--facebook js-external-link" href="https://www.facebook.com/biblicamentes">
@@ -93,7 +93,7 @@
 					Copyright © 2019 <strong>Biblicamentes</strong>. Todos os direitos reservados.
 				</div>
 			</div>
-		</div>
+		</section>
 	</footer>
 
 	<script src="/js/scripts.js"></script>

@@ -1,6 +1,6 @@
 .header {
   position: relative;
-  z-index: z(high-level);
+  z-index: z(overlay); // over fixed buttons navigation
 
   @include media(medium) {
     & {
@@ -82,13 +82,20 @@
   max-width: 120px;
   /* max-height: 90%; */
 
-  &:hover:focus {
+  &:hover,
+  &:focus {
     text-decoration: none;
   }
 }
 
 .navbar--desktop {
   display: none;
+  color: $purpura;
+
+  a:hover,
+  a:focus {
+    color: $purpura-light;
+  }
 
   @include media(medium) {
     display: block;
@@ -104,7 +111,7 @@
   width: 100%;
   //padding-bottom: 0.7em;
   text-align: center;
-  background-color: rgba(186, 207, 255, 0.95);
+  background-color: $azul-bg;
   transform: translateY(-10px); // start position
   transition: transform 0.5s;
 
@@ -123,7 +130,8 @@
       //padding: 0.4em 0;
       font-size: 1.2em;
 
-      &:hover:focus {
+      &:hover,
+      &:focus {
         color: $branco-hover;
       }
       &.nav-link--facebook {

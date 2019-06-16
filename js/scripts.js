@@ -179,7 +179,7 @@ window.onclick = (event) => {
 
 		// close all elements linked to modal when modal is closed
 		mobileMenu.classList.add('is-hidden');
-		modalAside.classList.remove('nav-bible-slide-in'); //scripts--biblia.js
+		modalAside.classList.remove('is-aside-nav--open'); //scripts--biblia.js
 		fadeOut(mobileMenu);
 	};
 }
@@ -204,7 +204,7 @@ const modalBgToggle = () => {
 // BOOK NAMES BUTTON DEACTIVATION
 //******************
 	let pathURI = window.location.pathname;
-	const bookBtn = document.querySelectorAll(".books-bible__btn");
+	const bookBtn = document.querySelectorAll(".bible__main-btn");
 
 	pathURI = pathURI.replace(/\/$/, ""); //exclude the last slash symbol
 	pathURI = decodeURIComponent(pathURI); //make sure to get it decoded (like we see)

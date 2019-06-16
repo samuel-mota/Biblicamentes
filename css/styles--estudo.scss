@@ -1,28 +1,15 @@
-/*************************************
-*** BASE STYLES
-*************************************/
+//***********************
+// BASE STYLES
+//***********************
 @import 'styles';
 
-// only styles for ESTUDO section 
+// only styles for BIBLIA section 
 .is-sticky {
-  //position: -webkit-sticky;  //Safari 
   position: sticky;
   top: 0;
 
   @include media(medium) {
     top: 100px;
-  }
-}
-
-.entry-title-wrapper {
-  background-color: $azul-bg;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-
-  @include media(medium) {
-    background-color: unset;
-    margin-right: 10px;
-    margin-top: 10px;
   }
 }
 
@@ -40,156 +27,175 @@
     margin-right: 0; //h1 padrao
     margin-left: 0; //h1 padrao
 
-    width: 25px;
-    height: auto;
-    margin: 0;
+    // width: auto;
+    // height: auto;
+    // margin: 0;
     white-space: nowrap;
   }
 }
 
-/*.entry-title-placeholder {
-	margin: 0;
-	padding: 0;
-	width: 0;
-	height: 0;
-}*/
+.entry-title__link {
+  background-color: $azul-bg;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 
-/*.is-active {
-	height: calc(36px + 21.44px + 21.44px); padding + margin do h1
-	display: block;
-	/*padding: 100px;
-	width: 100%;
-}*/
+  @include media(medium) {
+    background-color: unset;
+    // direction: rtl;
+    // transform: rotate(270deg);
+    width: 3em;
+    // height: auto;
+    // margin-right: 10px;
+    // margin-top: 10px;
+  }
+}
+
+// .entry-title-placeholder {
+// 	margin: 0;
+// 	padding: 0;
+// 	width: 0;
+// 	height: 0;
+// }
+
+// .is-active {
+// 	height: calc(36px + 21.44px + 21.44px); //padding + margin do h1
+// 	display: block;
+// 	padding: 100px;
+// 	width: 100%;
+// }
 
 .content {
-	text-align: left;
-}
-
-.content > * {
-	flex: 0 1 auto;
-	align-self: flex-start;
-}
-
-aside.nav-bible {
-	position: fixed;
-	top: 110px;
-  right: -290px;
-	width: 290px;
-	background-color: rgba(125, 185, 232, .7);
-	border-bottom-left-radius: 10px;
-	padding: .7em .5em;
-
-  transition: all .5s;
-}
-
-aside.nav-bible-slide-in {
-  right: 0!important; /* id takes precedence, use !important to override */
-}
-
-.capitulos-btn {
-  top: 29px;
-  left: -55px;
-}
-
-@keyframes fading {
-  from { opacity: 0 }
-  to { opacity: 1 }
-}
-
-/*aside.nav-bible:focus,
-aside.nav-bible:hover {
-	right: 0;
-}*/
-
-.nav-bible-wrapper {
-  overflow: auto;
-  height: calc(100vh - (110px + (0.7rem * 2) + 3px)); /*subtract 110px of .nav-bible top & .7em padding top/bottom & few pixels to not touch the bottom*/
-  text-align: center;
-}
-
-.nav-bible-wrapper .nav-chapters h3 {
-  margin-top: 0;
-}
-
-.nav-bible-wrapper h3 {
-  margin-bottom: 0;
-}
-
-.entry-content {
-	min-height: calc(100vh - (110px + (0.7rem * 2) + 3px)); /*subtract 110px of .nav-bible top & .7em padding top/bottom & few pixels to not touch the bottom*/
-}
-
-.linha-mais-info td {
-  font-size: small;
-  padding: 10px;
-  font-style: italic;
-  background-color: #fafad2;
-  border-radius: 15px;
-  /* border: 1px solid black; */
-}
-
-.linha-titulo td {
-  padding: 10px;
-  font-style: italic;
-}
-
-.linha-titulo td h3,
-.linha-titulo td h4 {
-  margin: 0;
-}
-
-.tabela-versiculos,
-.tabela-livro-intro {
-  font-family: var(--font-family-serif);
-}
-
-.tabela-versiculos .linha-conteudo td,
-.tabela-livro-intro .linha-conteudo td {
-  line-height: 1.7;
-}
-
-.linha-conteudo-ver {
-  position: relative;
-  top: 2px;
-  vertical-align: baseline;
-  text-align: right;
-  font-weight: bold;
-  font-size: small;
-  color: #a9a9a9;
-}
-
-.linha-conteudo-refcruzada {
-  font-family: var(--font-family-sans-serif);
-  font-size: small;
-  font-weight: bold;
-  font-style: italic;
-  color: #a9a9a9;
-}
-
-.linha-conteudo-refcruzada a {
-  white-space: nowrap;
-}
-
-.breadcrumb-meta {
-	margin-top: 0; 
-}
-
-.main-content {
-	display: flex;
-  align-items: flex-start;
-  flex-direction: column;
+  text-align: left;
+  
+  &__main {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  
+    @include media(medium) {
+      flex-direction: row;
+      flex: 3;
+    }
+  }
 
   @include media(medium) {
     flex-direction: row;
   }
 }
 
-.biblia-copyright td {
+.aside-nav {
+	position: fixed;
+	top: 110px;
+  right: -290px;
+	width: 290px;
+	background-color: $azul-bg;
+	border-bottom-left-radius: 10px;
+	padding: .7em .5em;
+
+  transition: all .5s;
+
+  &.is-aside-nav--open {
+    right: 0;
+  }
+
+  @include media(medium) {
+    position: static;
+    //top: 63px;
+    flex: 1;
+    background-color: unset;
+    border: none;
+    padding: 0;
+  }
+}
+
+.aside-nav__bible {
+  overflow: auto;
+  height: calc(100vh - (110px + (0.7rem * 2) + 3px)); //subtract 110px of .nav-bible top & .7em padding top/bottom & few pixels to not touch the bottom
+  text-align: center;
+
+  &--books {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  @include media(medium) {
+    height: 90vh;
+    position: sticky;
+    top: 63px;
+  }
+}
+
+
+//**************
+// capitulos.php
+//**************
+.entry-content {
+  min-height: calc(100vh - (110px + (0.7rem * 2) + 3px)); //subtract 110px of .nav-bible top & .7em padding top/bottom & few pixels to not touch the bottom
+}
+
+.entry-content__title {
+  font-style: italic;
+}
+
+.entry-content__intro {
+  font-family: ffamily(serif);
+  line-height: $content-line-height;
+
+  @extend %link-bold--main;
+}
+
+.entry-content__chapter {
+  @extend .entry-content__intro;
+}
+
+.entry-content__verse {
+  
+  &--more-info {
+    font-size: small;
+    padding: 10px;
+    margin: 0 1.5em;
+    font-style: italic;
+    background-color: #fafad2;
+    border-radius: 15px;
+    box-shadow: 1px 1px 2px $purpura-light;
+  }
+
+  &--number {
+    //position: relative; //sup tag already has it
+    top: -3px;
+    font-weight: bold;
+    color: $text-muted;
+  }
+
+  &--cross-ref {
+    font-family: ffamily(sans-serif);
+    font-size: small;
+    font-style: italic;
+
+    @extend %link-bold--muted-v2;
+  }
+}
+
+.breadcrumb-meta {
+  margin-top: 0;
+
+  @extend %link-bold--main;
+}
+
+.entry-content__copyright {
   border: 1px solid rgba(172, 175, 33, 0.35);
   font-style: italic;
   font-size: small;
   text-align: center;
   border-radius: 18px;
-  margin: 86px;
+  margin: 2em 0.5em;
   font-family: ffamily(sans-serif);
+  padding: 0 1em;
+}
+
+.content__error {
+  line-height: $content-line-height;
+  font-weight: bold;
+  font-style: italic;
+  margin: 2em;
 }

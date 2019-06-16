@@ -23,6 +23,12 @@ $azul-darken: darken($azul, 30%);
 $azul-bg: rgba(186, 207, 255, 0.9);
 $info: #304f50; //cadetblue
 
+$text-muted: #a9a9a9;
+$text-muted-dark: scale-color($text-muted, $lightness: -20%);
+
+//https://getbootstrap.com/docs/4.1/utilities/colors/
+
+
 
 // --azul: #00f;
 // --branco: #fff;

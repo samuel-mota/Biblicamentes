@@ -1,72 +1,56 @@
 
-<a href="/kja/<?= $book['livro_slug'] ?>/" aria-label="Ir para introdução de <?= $book['livro_nome'] ?>" class="entry-title-wrapper is-sticky has-tooltip--toright">
+<a href="/kja/<?= $book['livro_slug'] ?>/" aria-label="Ir para introdução de <?= $book['livro_nome'] ?>" class="entry-title__link is-sticky has-tooltip--toright">
   <h1 class="entry-title"><?= ($bookWithNoSpace = str_replace(' ', '', $book['livro_nome'])) . ' ' . $chapter['cap']; ?></h1>
 </a>
-  <!-- <p class="breadcrumb-meta">
-    <small>
-      <a href="#">Estudo Bíblico</a> > <a href="#">Gênesis</a>
-    </small>
-  </p> -->
-<!-- </hgroup> -->
+
 <div class="entry-content">
-  <p class="breadcrumb-meta">
-
-    <?php // if () ACRESCENTAR O LINK DA INTRODUCAO DO CAPITULO?>
-
+  <span class="breadcrumb-meta">
     <small>
       <a href="/">Início</a> &gt; 
       <a href="/kja/<?= $book['livro_slug']; ?>"><?= $book['livro_nome']; ?></a> &gt; 
-      <strong>Cap. <?= $chapter['cap']; ?></strong>
+      <strong>cap. <?= $chapter['cap']; ?></strong>
     </small>
-  </p>
+  </span>
   
-  <table class="tabela-versiculos">
-<!-- 					<thead>
-      <tr>
-        <th>Versículos</th>							
-        <th>Texto</th>
-      </tr>
-    </thead> -->
-    <tbody>
+  <article class="entry-content__chapter">
       
       <?php 
         if (!empty($verses)):	
           foreach ($verses as $verse): 
             if (!is_null($verse['titulo'])):
       ?>
-      
-        <tr class="linha-titulo">
-          <td colspan="2">
-            <hgroup>
-              <h3><?= $verse['titulo']; ?></h3>
-              <h4><?= $verse['subtitulo']; ?></h4>
-            </hgroup>
-          </td>
-        </tr>
+
+        <hgroup class="entry-content__titles">
+          <h3 class="entry-content__title"><?= $verse['titulo']; ?></h3>
+          <h4 class="entry-content__subtitle"><?= $verse['subtitulo']; ?></h4>
+        </hgroup>
 
       <?php endif; // titulo ?>
 
-      <tr class="linha-conteudo ver-<?= $verse['ver']; ?>">
-        <td class="linha-conteudo-ver"><?= $verse['ver']; ?></td>
-        <td class="linha-conteudo-texto">
-          <?= $verse['texto']; ?>
-          <span class="linha-conteudo-refcruzada">
+      <p class="entry-content__verse verse-<?= $verse['ver']; ?>"> 
+      <!-- linha-conteudo linha-conteudo-ver -->
+        <sup class="entry-content__verse--number"><?= $verse['ver']; ?></sup>
+        <!-- <td class="linha-conteudo-texto"> -->
+        
+        <?= $verse['texto']; ?>
 
-            <?php
-              if (!empty($verse['referencias'])):
-                $crossRefLinks = new CrossRef($verse['referencias']); 
-              endif; 
-            ?>
+        <span class="entry-content__verse--cross-ref">
 
-          </span>
-        </td>
-      </tr>
+          <?php
+            if (!empty($verse['referencias'])):
+              $crossRefLinks = new CrossRef($verse['referencias']); 
+            endif; 
+          ?>
+
+        </span>
+        <!-- </td> -->
+      </p>
 
       <?php if (!is_null($verse['mais_info'])):	?>
 
-        <tr class="linha-mais-info">
-          <td colspan="2"><?= $verse['mais_info']; ?></td>
-        </tr>							
+        <p class="entry-content__verse--more-info">
+            <?= $verse['mais_info']; ?>
+        </p>							
 
       <?php
             endif; // mais_info
@@ -75,21 +59,21 @@
           //if (!is_null($copy['copyright'])):
       ?>
 
-        <tr class="biblia-copyright">
-          <td colspan="2"><?= $copy['texto']; ?></td>
-        </tr>
+        <article class="entry-content__copyright">
+          <?= $copy['texto']; ?>
+        </article>
 
       <?php
         else:
       ?>
 
-      <tr class="linha-conteudo">
-        <td class="linha-conteudo-texto">Capítulo Inexistente. Livro de <?= $book['livro_nome'] ?> tem <?= $book['total_capitulos']?> capítulo(s). </td>
-      </tr>
+      <div class="content__error">
+        Capítulo Inexistente. Livro de <?= $book['livro_nome'] ?> tem <?= $book['total_capitulos']?> capítulo(s).
+      </div>
 
       <?php endif; ?>
       
-    </tbody>
-  </table>
+    <!-- </tbody> -->
+    </article>
   
 </div>
