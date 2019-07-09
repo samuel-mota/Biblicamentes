@@ -4,7 +4,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding-top: 63px; 
+  padding-top: 5rem; 
   text-align: center;
 
   &__instagram-feed,
@@ -15,7 +15,7 @@
 
   &__random-verse-link {
     font-weight: bold;
-    color: $purpura;
+    @extend %link-bold--main;
   }
 
   @include media(medium) {

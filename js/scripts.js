@@ -172,14 +172,17 @@ const modalBg = document.querySelector('.js-modal-bg');
 
 window.onclick = (event) => {	
 	if (event.target == modalBg) { 
-		// close modal when click anywhere outside the modal
+		// close modals when click anywhere outside the modal
+		// close all elements linked to modal when modal is closed
 		modalBg.classList.add('is-hidden');
 		modalHeader.classList.remove('is-modal');
-		modalAside.classList.remove('is-modal');
-
-		// close all elements linked to modal when modal is closed
 		mobileMenu.classList.add('is-hidden');
-		modalAside.classList.remove('is-aside-nav--open'); //scripts--biblia.js
+
+		if (modalAside) { // if element exists do
+			modalAside.classList.remove('is-modal');
+			modalAside.classList.remove('is-aside-nav--open'); 
+		}
+
 		fadeOut(mobileMenu);
 	};
 }
@@ -216,3 +219,18 @@ const modalBgToggle = () => {
 		}
 	});
 }
+
+
+//******************
+// ASIDE MENU NAVIGATION
+//******************
+const capitulosBtn = document.querySelector('.js-aside-button');
+const modalAside = document.querySelector('.js-aside-modal');
+
+capitulosBtn.addEventListener('click', () => {
+  modalAside.classList.toggle('is-aside-nav--open');
+  modalAside.classList.toggle('is-modal');
+
+  modalBgToggle();
+});
+

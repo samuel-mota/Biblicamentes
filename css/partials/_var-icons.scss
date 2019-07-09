@@ -8,6 +8,10 @@ $icons: (
   heart: "\f004"
 );
 
+.page__main-icon {
+  color: lightgray
+}
+
 // @each $name, $icon in $icons {
 //   .fa-#{$name}:before {
 //     content: $icon;

@@ -13,7 +13,7 @@
 
 	<section class="content container">
 	
-		<div>Erro Servidor 500</div>
+		<div>Erro 500 - Erro interno do Servidor</div>
 		
 	</section>
 

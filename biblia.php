@@ -39,7 +39,7 @@
 <head>
 	<meta charset="utf-8">
 	<title><?= $book['livro_nome'] ?> * Biblicamentes</title>
-	<link rel="stylesheet" href="/css/styles--estudo.css">
+	<link rel="stylesheet preload" href="/css/styles--estudo.css" as="style">
 	
 <?php 
 	require_once 'html__head.php';

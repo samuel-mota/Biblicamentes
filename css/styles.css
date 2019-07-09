@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono|Kaushan+Script|Noto+Serif");
 @import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css");
+.page__main-icon {
+  color: lightgray;
+}
+
 html {
   line-height: 1.15;
   /* 1 */
@@ -573,6 +577,63 @@ img {
   font-weight: bold;
 }
 
+.content__random-verse-link a {
+  color: #800080;
+  font-weight: bold;
+}
+
+.content__random-verse-link a:hover, .content__random-verse-link a:focus {
+  color: #cc00cc;
+}
+
+.main__link--bold {
+  color: #800080;
+  font-weight: bold;
+}
+
+.main__link--bold:hover, .main__link--bold:focus {
+  color: #cc00cc;
+}
+
+.navbar--desktop .nav-link, .navbar--mobile .nav-link {
+  color: #800080;
+}
+
+.navbar--desktop .nav-link:hover, .navbar--mobile .nav-link:hover, .navbar--desktop .nav-link:focus, .navbar--mobile .nav-link:focus {
+  color: #cc00cc;
+}
+
+.navbar--mobile .nav-items--social-mobile .nav-link {
+  color: #bec7d1;
+}
+
+.navbar--mobile .nav-items--social-mobile .nav-link--facebook.nav-link {
+  background-color: #2f487c;
+}
+
+.navbar--mobile .nav-items--social-mobile .nav-link--facebook.nav-link:hover, .navbar--mobile .nav-items--social-mobile .nav-link--facebook.nav-link:focus {
+  color: #f8f9fa;
+  background-color: #3b5998;
+}
+
+.navbar--mobile .nav-items--social-mobile .nav-link--twitter.nav-link {
+  background-color: #458abe;
+}
+
+.navbar--mobile .nav-items--social-mobile .nav-link--twitter.nav-link:hover, .navbar--mobile .nav-items--social-mobile .nav-link--twitter.nav-link:focus {
+  color: #f8f9fa;
+  background-color: #55acee;
+}
+
+.navbar--mobile .nav-items--social-mobile .nav-link--instagram.nav-link {
+  background-color: #9e2c6d;
+}
+
+.navbar--mobile .nav-items--social-mobile .nav-link--instagram.nav-link:hover, .navbar--mobile .nav-items--social-mobile .nav-link--instagram.nav-link:focus {
+  color: #f8f9fa;
+  background-color: #c13584;
+}
+
 .is-modal {
   z-index: 999 !important;
 }
@@ -830,12 +891,6 @@ html ::-webkit-scrollbar-thumb:hover {
 
 .navbar--desktop {
   display: none;
-  color: #800080;
-}
-
-.navbar--desktop a:hover,
-.navbar--desktop a:focus {
-  color: #cc00cc;
 }
 
 @media (min-width: 768px) {
@@ -880,22 +935,6 @@ html ::-webkit-scrollbar-thumb:hover {
   font-size: 1.2em;
 }
 
-.navbar--mobile .nav-items--social-mobile .nav-link:hover, .navbar--mobile .nav-items--social-mobile .nav-link:focus {
-  color: #bec7d1;
-}
-
-.navbar--mobile .nav-items--social-mobile .nav-link.nav-link--facebook {
-  background-color: #3b5998;
-}
-
-.navbar--mobile .nav-items--social-mobile .nav-link.nav-link--twitter {
-  background-color: #55acee;
-}
-
-.navbar--mobile .nav-items--social-mobile .nav-link.nav-link--instagram {
-  background-color: #c13584;
-}
-
 @media (min-width: 768px) {
   .navbar--mobile {
     display: none;
@@ -937,7 +976,7 @@ html ::-webkit-scrollbar-thumb:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding-top: 63px;
+  padding-top: 5rem;
   text-align: center;
 }
 
@@ -947,7 +986,6 @@ html ::-webkit-scrollbar-thumb:hover {
 
 .content__random-verse-link {
   font-weight: bold;
-  color: #800080;
 }
 
 @media (min-width: 768px) {

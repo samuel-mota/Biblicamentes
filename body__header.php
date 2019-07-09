@@ -85,10 +85,12 @@
 				</div>
 					
 				<!-- SEARCH -->
-					<!-- <form class="search-form">
-								<input class="input" type="search" placeholder="Procurar" aria-label="Search">
-								<button class="button button__search" type="submit">Procurar</button>
-						</form> -->
+				<form class="search__form" action="pesquisa.php" method="GET">
+					<input class="search__input" type="search" placeholder="Pesquisar" name="termos">
+					<button class="search__button" type="submit" name="pagina" value="1">
+						<i class="fas fa-search"></i>
+					</button>
+				</form>
 
 			</nav>
 		</div>

@@ -13,7 +13,7 @@
 
 	<section class="content container">
 	
-		<div>Erro 404</div>
+		<div>Erro 404 - Página não encontrada</div>
 		
 	</section>
 

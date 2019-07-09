@@ -90,12 +90,7 @@
 
 .navbar--desktop {
   display: none;
-  color: $purpura;
-
-  a:hover,
-  a:focus {
-    color: $purpura-light;
-  }
+  @extend %link-main;
 
   @include media(medium) {
     display: block;
@@ -104,6 +99,8 @@
 
 .navbar--mobile {
   //display: block;
+  @extend %link-main;
+
   opacity: 0;
   position: absolute;
   top: 63px; 
@@ -130,19 +127,7 @@
       //padding: 0.4em 0;
       font-size: 1.2em;
 
-      &:hover,
-      &:focus {
-        color: $branco-hover;
-      }
-      &.nav-link--facebook {
-        background-color: #3b5998;
-      }
-      &.nav-link--twitter {
-        background-color: #55acee;
-      }
-      &.nav-link--instagram {
-        background-color: #c13584;
-      }
+      @extend %link-social;
     }
   }
 

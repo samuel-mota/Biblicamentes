@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Biblicamentes</title>
-	<link rel="stylesheet" href="/css/styles.css">
+	<link rel="stylesheet preload" href="/css/styles.css" as="style">
 	
 <?php 
 	require_once 'html__head.php';
