@@ -3,3 +3,4 @@
 
 # files
 .eslintrc
+classes/db-config.php
