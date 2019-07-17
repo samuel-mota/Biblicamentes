@@ -9,7 +9,8 @@ RewriteRule ^(kja)\/?$ /index.php [NC,L]
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([a-z]+)\/?$ $1.php [NC,L]
+#letra A a Z e -, para aceitar "fale-conosco"
+RewriteRule ^([a-z\-]+)\/?$ $1.php [NC,L]
 
 #LIVRO (grupo $1 redireciona tudo para biblia.php)
 RewriteBase /

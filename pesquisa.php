@@ -28,24 +28,21 @@
 	
   <section class="content l-container">
     <i class="fas fa-search fa-7x page__main-icon"></i>
-
     <h1>Resultados da Pesquisa</h1>
 
-    <section class="search-terms">
-
     <?php 
-        //echo $pageSelected;
+      //echo $pageSelected;
       $rowsPerPage = 20;
 
-      if (strlen($terms) <= 1) :
+      if (strlen($terms) <= 1 || empty($terms)):
         echo "<p>Termo muito curto, palavra deve conter pelo menos 2 caracteres</p>";
 
-      else :
+      else:
         $search = Search::searchTerms($terms, $pageSelected, $rowsPerPage);
         //print_r($search);
         //var_dump($search);
 
-        if (count($search) == 0) :
+        if (count($search) == 0):
           echo "<p>Desculpe, não encontramos nenhum versículo correspondente para o(s) termo(s) <strong>$terms</strong>.</p>
           <h4>Veja algumas dicas:</h4>
           <ol style='text-align: left;'>
@@ -56,32 +53,39 @@
         else :
           echo "<p>Você procurou por <strong>$terms</strong></p> 
           <hr size='1'>";
+    ?>
 
-          $count = 0;
+    <article class="content content--row">
 
-          foreach($search as $term): 
-            $count += 1; ?>
+      <section class="searched-terms">
 
-            <p class="search-terms__verse term__number-<?= $count ?>">
+        <?php 
+        $count = 0;
 
-              <a class="main__link--bold" href="/kja/<?= $term['livro_slug']; ?>/<?= $term['cap'] ?>/">
-                <?= $term['livro_nome']; ?>&nbsp;<?= $term['cap']; ?>:<?= $term['ver']; ?>
-              </a>
+        foreach($search as $term): 
+          $count += 1; 
+        ?>
 
-              <?= $term['texto']; ?>
+        <p class="search-terms__verse term__number-<?= $count ?>">
 
-            </p>
+          <a class="main__link--bold" href="/kja/<?= $term['livro_slug']; ?>/<?= $term['cap'] ?>/">
+            <?= $term['livro_nome']; ?>&nbsp;<?= $term['cap']; ?>:<?= $term['ver']; ?>
+          </a>
 
-        <?php endforeach; ?>
+          <?= $term['texto']; ?>
 
+        </p>
 
-    <aside class="aside-nav js-aside-modal">
-			
-			<button type="button" class="aside-nav__button js-aside-button" aria-label="Busca por livros">Livros</button>
+      <?php endforeach; ?>
 
-			<div class="aside-nav__bible--search">
-				
-					<h3 class="aside-nav__bible--intro">Termos encontrados por livro</h3>
+      </section>
+
+      <aside class="aside-nav js-aside-modal">
+        <button type="button" class="aside-nav__button js-aside-button" aria-label="Busca por livros">Livros</button>
+
+        <div class="aside-nav__bible--search">
+        
+          <h3 class="aside-nav__bible--intro">Termos encontrados por livro</h3>
 
             <!-- ROWS BY BOOKS -->
           <table>
@@ -92,35 +96,35 @@
           $totalRowsByBooks = Search::totalRowsByBooks($terms);
 
           foreach ($totalRowsByBooks as $row): 
-					?>
-						
+          ?>
+            
               <tr>
                 <td><?= $row['livro_nome'] ?></td>
                 <td><?= $row['TOTAL'] ?></td>
               </tr>
 
-						<!-- <a class="bible__main-btn" href="/kja/< ?= //$book['livro_slug'] ?>/< ?= //$i ?>">< ?= //$i ?></a> -->
-						
+            <!-- <a class="bible__main-btn" href="/kja/< ?= //$book['livro_slug'] ?>/< ?= //$i ?>">< ?= //$i ?></a> -->
+            
           <?php endforeach; ?>
 
           </table>
 
-			</div>
-		</aside>
+        </div>
+      </aside>
+    
+    </article>
+  </section>
+
+  <div class="pagination">
 
     <?php // ********** PAGINATION ***********
-      $totalRows = Search::totalRows($terms);
-      
-      $totalPages = ceil($totalRows[0]/$rowsPerPage);
-      // FOR TEST ******
-      //$totalPages = 10; 
-      // ***************
+    $totalRows = Search::totalRows($terms);
 
-    ?>
+    $totalPages = ceil($totalRows[0]/$rowsPerPage);
+    // FOR TEST ******
+    //$totalPages = 10; 
+    // ***************
 
-    <div class="pagination">
-
-      <?php 
     $pagesStart = array();
     $pagesMid = array();
     $pagesEnd = array();
@@ -215,10 +219,5 @@
         - INCLUIR CAIXAS DE SELECAO PARA QUANTIDADE DE ITENS MOSTRADOS
         ********************/
     ?>
-		
-    </section>
-
-  </section>
-
 
   <?php require_once 'body__footer.php'; ?>
