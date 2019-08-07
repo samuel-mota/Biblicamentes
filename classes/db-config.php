@@ -5,7 +5,7 @@
 define('DEBUG', false); // true = modo produção, false = modo não produção
 
 // items do banco de dados
-// drive:host=LOCATION;dbname=NOME-DO-DB, USUARIO, SENHA
+// DB_DRIVE:host=DB_HOSTNAME;dbname=DB_DATABASE, DB_USERNAME, DB_PASSWORD
 define ('DB_DRIVE', 'mysql');
 define ('DB_HOSTNAME', 'localhost:3308'); //localhost
 define ('DB_DATABASE', 'biblicamentes');

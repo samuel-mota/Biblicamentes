@@ -1,5 +1,5 @@
 
-<a href="/kja/<?= $book['livro_slug'] ?>/" aria-label="Ir para introdução de <?= $book['livro_nome'] ?>" class="entry-title__link is-sticky has-tooltip--toright">
+<a href="/kja/<?= $book['livro_slug'] ?>/" aria-label="Ir para introdução de <?= $book['livro_nome'] ?>" class="entry-title__link is-sticky">
   <h1 class="entry-title"><?= ($bookWithNoSpace = str_replace(' ', '', $book['livro_nome'])) . ' ' . $chapter['cap']; ?></h1>
 </a>
 

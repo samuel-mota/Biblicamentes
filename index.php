@@ -20,7 +20,7 @@
 	
 ?>
 	
-	<section class="content content--row l-container">
+	<section class="content content--center content--row l-container">
 		
 		<!-- VERSICULOS ALEATÓRIOS -->
 		<article class="content__random-verses">

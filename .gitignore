@@ -1,6 +1,8 @@
 # folders
 .vscode/
+node_modules/
 
 # files
 .eslintrc
-classes/db-config.php
+package*
+gulpfile.js

@@ -85,7 +85,7 @@
 				</div>
 					
 				<!-- SEARCH -->
-				<form class="search__form" action="pesquisa.php" method="GET">
+				<form class="search__form" action="/pesquisa.php" method="GET">
 					<input class="search__input" type="search" placeholder="Pesquisar" name="termos">
 					<button class="search__button" type="submit" name="pagina" value="1">
 						<i class="fas fa-search"></i>

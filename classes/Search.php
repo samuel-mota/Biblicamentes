@@ -23,12 +23,12 @@ class Search {
                       ver, 
                       texto,
                       livro_slug,
-                      MATCH (texto) AGAINST (:terms) 
+                      MATCH (texto) AGAINST (:terms IN BOOLEAN MODE) 
                       AS SCORE 
     FROM bibliakja AS biblia
     LEFT JOIN biblia_livros AS bl
     ON bl.cod_livro = biblia.cod_livro
-    WHERE MATCH (texto) AGAINST (:terms) > 0
+    WHERE MATCH (texto) AGAINST (:terms IN BOOLEAN MODE) > 0
     LIMIT $startRow,$totalRowsPerPage";
 
 		$connection = Connect::getConnection();
@@ -48,12 +48,12 @@ class Search {
                       ver, 
                       texto,
                       livro_slug,
-                      MATCH (texto) AGAINST (:terms) 
+                      MATCH (texto) AGAINST (:terms IN BOOLEAN MODE) 
                       AS SCORE 
     FROM bibliakja AS biblia
     LEFT JOIN biblia_livros AS bl
     ON bl.cod_livro = biblia.cod_livro
-    WHERE MATCH (texto) AGAINST (:terms) > 0
+    WHERE MATCH (texto) AGAINST (:terms IN BOOLEAN MODE) > 0
     AND livro_slug = :book
     LIMIT $startRow,$totalRowsPerPage";
 
@@ -74,7 +74,7 @@ class Search {
     FROM bibliakja AS biblia
     LEFT JOIN biblia_livros AS bl
     ON bl.cod_livro = biblia.cod_livro
-    WHERE MATCH (texto) AGAINST (:terms) > 0
+    WHERE MATCH (texto) AGAINST (:terms IN BOOLEAN MODE) > 0
     GROUP BY bl.id";
 
     $connection = Connect::getConnection();
@@ -90,7 +90,7 @@ class Search {
 
     $query = "SELECT COUNT(cod_livro) AS TOTAL
     FROM bibliakja
-    WHERE MATCH (texto) AGAINST (:terms) > 0";
+    WHERE MATCH (texto) AGAINST (:terms IN BOOLEAN MODE) > 0";
 
     $connection = Connect::getConnection();
     $statement = $connection->prepare($query);

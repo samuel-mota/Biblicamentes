@@ -27,8 +27,9 @@
 ?>
 	
   <section class="content l-container">
-    <i class="fas fa-search fa-7x page__main-icon"></i>
-    <h1>Resultados da Pesquisa</h1>
+    <header class="content--center">
+      <i class="fas fa-search fa-7x page__main-icon"></i>
+      <h1>Resultados da Pesquisa</h1>
 
     <?php 
       //echo $pageSelected;
@@ -36,6 +37,8 @@
 
       if (strlen($terms) <= 1 || empty($terms)):
         echo "<p>Termo muito curto, palavra deve conter pelo menos 2 caracteres</p>";
+        
+        echo "</header></section>";
 
       else:
         $search = Search::searchTerms($terms, $pageSelected, $rowsPerPage);
@@ -43,19 +46,24 @@
         //var_dump($search);
 
         if (count($search) == 0):
-          echo "<p>Desculpe, não encontramos nenhum versículo correspondente para o(s) termo(s) <strong>$terms</strong>.</p>
+          echo "<p>Desculpe, não encontramos nenhum versículo correspondente para o(s) termo(s) &quot;<strong>$terms</strong>&quot;.</p>
           <h4>Veja algumas dicas:</h4>
           <ol style='text-align: left;'>
-          <li>Tente palavras chaves. Por exemplo: Se você quiser procurar 'onde está escrito sobre o Monte Sinai' use somente 'Monte Sinai'</li>
+          <li>Tente palavras chaves. Por exemplo: Se você quiser procurar <i>&quot;onde está escrito sobre o Monte Sinai&quot;</i> use somente &quot;<i>Monte Sinai</i>&quot;</li>
           <li>Tente palavras diferentes com significados parecidos.</li>
           <li>Por favor verifique a ortografia.</li></ol>";
 
-        else :
-          echo "<p>Você procurou por <strong>$terms</strong></p> 
+          echo "</header></section>";
+
+        else:
+          echo "<p>Você procurou por &quot;<strong>$terms</strong>&quot;</p> 
           <hr size='1'>";
+
+          echo "</header>";
     ?>
 
-    <article class="content content--row">
+
+    <article class="content content__search content--row">
 
       <section class="searched-terms">
 
@@ -212,7 +220,7 @@
     </div>
 
     <?php endif; //(count($search) == 0)
-      endif; //(strlen($terms) <= 1)
+      endif; //(strlen($terms) <= 1 || empty($terms))
         /*     
         - PAGINACAO
         - MOSTRAR QUANTOS VERSICULOS ENCONTRADOS 

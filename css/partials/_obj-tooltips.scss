@@ -121,3 +121,30 @@ $offset: 8px;
     transform: translate(-$offset, -50%);
   }
 }
+
+//***************** NAO ESTA PRONTO ***********
+// TOOLTIP TO BOTTOM
+.has-tooltip--tobottom[aria-label] {
+  @extend %tooltip;
+
+  &::before {
+    border-bottom-color: $info;
+    bottom: 0;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    bottom: -$offset; // translateX(8px) on hover
+  }
+
+  &::after {
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+  }
+
+  &:hover::after,
+  &:focus::after {
+    transform: translate(-$offset, -50%);
+  }
+}
