@@ -3,6 +3,8 @@
 node_modules/
 
 # files
-.eslintrc
+.eslintrc*
 package*
 gulpfile.js
+.jsbeautifyrc
+.prettierrc

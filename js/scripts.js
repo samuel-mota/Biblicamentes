@@ -3,7 +3,7 @@
 //******************
 const opStart = 0.1;
 
-const fadeOut = (el) => {
+const fadeOut = el => {
 	let op = 1; // opacity
 	if (bar1.classList.contains('bar1--move')) {
 		bar1.classList.remove('bar1--move');
@@ -13,21 +13,20 @@ const fadeOut = (el) => {
 
 	(function fadeOutAnimation() {
 		if (op <= 0) {
-			
 			el.classList.add('is-hidden');
 		} else {
 			let opFixed = op.toFixed(2);
 			//el.style.top = 53 + "px"; //check .navbar--mobile css
 			el.style.transform = 'translateY(-10px)';
-			el.style.opacity = opFixed; 
+			el.style.opacity = opFixed;
 			requestAnimationFrame(fadeOutAnimation);
 		}
 
 		op -= opStart;
 	})();
-}
+};
 
-const fadeIn = (el) => {
+const fadeIn = el => {
 	let op = 0; //opacity
 	el.classList.remove('is-hidden');
 	bar1.classList.add('bar1--move');
@@ -45,7 +44,7 @@ const fadeIn = (el) => {
 
 		op += opStart;
 	})();
-}
+};
 
 const mobileMenu = document.querySelector('.js-mobile-menu');
 const btnMobileMenu = document.querySelector('.js-mobile-menu-btn');
@@ -55,7 +54,7 @@ const bar2 = document.querySelector('.bar2');
 const bar3 = document.querySelector('.bar3');
 
 btnMobileMenu.addEventListener('click', () => {
-	if (mobileMenu.classList.contains('is-hidden')){
+	if (mobileMenu.classList.contains('is-hidden')) {
 		fadeIn(mobileMenu);
 		modalBgToggle();
 		modalHeader.classList.add('is-modal');
@@ -66,42 +65,46 @@ btnMobileMenu.addEventListener('click', () => {
 	}
 });
 
-
 //******************
 // FUNCTION TO DETECT SCROLLING
 //******************
 const detectScroll = (pxDown, elementToSelected, classToggle, removeFirst) => {
 	const elementSelected = document.querySelector(elementToSelected);
-	const docScrolled = document.body.scrollTop || document.documentElement.scrollTop; // body FOR SAFARI, documentElement FOR CHROME, FIREFOX, IE and OPERA
+	const docScrolled =
+		document.body.scrollTop || document.documentElement.scrollTop; // body FOR SAFARI, documentElement FOR CHROME, FIREFOX, IE and OPERA
 
 	//change classes
-  if (docScrolled > pxDown) { // in px
-    if (removeFirst) {
-    	elementSelected.classList.remove(classToggle);
-    } else {
-    	elementSelected.classList.add(classToggle);
-    }
-  } else {
-    if (removeFirst) {
-    	elementSelected.classList.add(classToggle);
-    } else {
-    	elementSelected.classList.remove(classToggle);
-    }
-  }
-}
+	if (docScrolled > pxDown) {
+		// in px
+		if (removeFirst) {
+			elementSelected.classList.remove(classToggle);
+		} else {
+			elementSelected.classList.add(classToggle);
+		}
+	} else {
+		if (removeFirst) {
+			elementSelected.classList.add(classToggle);
+		} else {
+			elementSelected.classList.remove(classToggle);
+		}
+	}
+};
 
 //******************
 // FUNCTION TO STICKY ELEMENTS
 //******************
 const stickyEl = (stopPoint, targetEl, positionEl = 0) => {
 	//height when scrolling
-	const docScrolled = document.body.scrollTop || document.documentElement.scrollTop;
-	
+	const docScrolled =
+		document.body.scrollTop || document.documentElement.scrollTop;
+
 	//element height + position bottom
 	const targetOffset = targetEl.clientHeight + positionEl;
-	
+
 	//view port height
-	const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - targetOffset;
+	const h =
+		Math.max(document.documentElement.clientHeight, window.innerHeight || 0) -
+		targetOffset;
 	//const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
 	// console.log(targetEl.clientHeight);
@@ -109,13 +112,13 @@ const stickyEl = (stopPoint, targetEl, positionEl = 0) => {
 	// console.log(w);
 
 	//change to position ABSOLUTE when reaching stop point
-	if ((docScrolled + h + targetOffset) >= stopPoint) {
+	if (docScrolled + h + targetOffset >= stopPoint) {
 		targetEl.style.position = 'absolute';
 		targetEl.style.top = stopPoint - targetOffset + 'px';
 	} else {
 		targetEl.removeAttribute('style');
 	}
-}
+};
 
 //******************
 // SCROLL TO TOP
@@ -126,7 +129,7 @@ const stickyEl = (stopPoint, targetEl, positionEl = 0) => {
 
 // 	if (docScrolled != 0) {
 // 		window.requestAnimationFrame(toTop);
-// 		window.scrollTo(0, docScrolled - docScrolled / 10); // goes smoothie to top 
+// 		window.scrollTo(0, docScrolled - docScrolled / 10); // goes smoothie to top
 // 		console.log(docScrolled - docScrolled / 8);
 // 	}
 
@@ -135,62 +138,61 @@ const stickyEl = (stopPoint, targetEl, positionEl = 0) => {
 // 		behavior: "smooth"
 // 	});
 // }
-document.querySelector('.js-scrool-to-top').addEventListener('click', () => 
+document.querySelector('.js-scrool-to-top').addEventListener('click', () =>
 	window.scrollTo({
 		top: 0,
-		behavior: "smooth"
+		behavior: 'smooth'
 	})
 );
 
-//******************
+// ******************
 // ELEMENTS BEHAVIOR ON SCROLLING
-//******************
+// ******************
 // activate functions when scrolling
-window.onscroll = () => { 
+window.onscroll = () => {
 	// DETECTSCROLL = pxDown, elementToSelected, classToggle, removeFirst
 	//LEFT/RIGHT NAV BUTTONS
-	detectScroll(200, ".scroll-top__button", "scroll-top__button--hidden", true);
-	//HEADER 
-	detectScroll(39, ".header", "is-header-hidden", false);
+	detectScroll(200, '.scroll-top__button', 'scroll-top__button--hidden', true);
+	// HEADER
+	detectScroll(39, '.header', 'is-header-hidden', false);
 
-	//stop point height
-	const stopPoint = document.querySelector(".footer").offsetTop;
-	//nav buttons
-	const leftBtn = document.querySelector(".js-chapter-nav--left");
-	const rightBtn = document.querySelector(".js-chapter-nav--right");
-	
-	//stopPoint, targetEl, positionEl = css position bottom
-	stickyEl(stopPoint, leftBtn, 10); 
-	stickyEl(stopPoint, rightBtn, 10); 
-}
+	// stop point height
+	const stopPoint = document.querySelector('.footer').offsetTop;
+	// nav buttons
+	const leftBtn = document.querySelector('.js-chapter-nav--left');
+	const rightBtn = document.querySelector('.js-chapter-nav--right');
 
+	// stopPoint, targetEl, positionEl = css position bottom
+	stickyEl(stopPoint, leftBtn, 10);
+	stickyEl(stopPoint, rightBtn, 10);
+};
 
-//******************
+// ******************
 // MODAL
-//******************
+// ******************
 const modalBg = document.querySelector('.js-modal-bg');
 
-window.onclick = (event) => {	
-	if (event.target == modalBg) { 
+window.onclick = event => {
+	if (event.target == modalBg) {
 		// close modals when click anywhere outside the modal
 		// close all elements linked to modal when modal is closed
 		modalBg.classList.add('is-hidden');
 		modalHeader.classList.remove('is-modal');
 		mobileMenu.classList.add('is-hidden');
 
-		if (modalAside) { // if element exists do
+		if (modalAside) {
+			// if element exists do
 			modalAside.classList.remove('is-modal');
-			modalAside.classList.remove('is-aside-nav--open'); 
+			modalAside.classList.remove('is-aside-nav--open');
 		}
 
 		fadeOut(mobileMenu);
-	};
-}
+	}
+};
 
 const modalBgToggle = () => {
 	modalBg.classList.toggle('is-hidden');
-}
-
+};
 
 //******************
 // EXTERNAL LINKS
@@ -199,27 +201,26 @@ const modalBgToggle = () => {
 	const externalLink = document.querySelectorAll('.js-external-link');
 
 	externalLink.forEach(el => {
-		el.setAttribute('rel', 'noopener',);
+		el.setAttribute('rel', 'noopener');
 		el.setAttribute('target', '_blank');
 	});
 
-//******************
-// BOOK NAMES BUTTON DEACTIVATION
-//******************
+	//******************
+	// BOOK NAMES BUTTON DEACTIVATION
+	//******************
 	let pathURI = window.location.pathname;
-	const bookBtn = document.querySelectorAll(".bible__main-btn");
+	const bookBtn = document.querySelectorAll('.bible__main-btn');
 
-	pathURI = pathURI.replace(/\/$/, ""); //exclude the last slash symbol
+	pathURI = pathURI.replace(/\/$/, ''); //exclude the last slash symbol
 	pathURI = decodeURIComponent(pathURI); //make sure to get it decoded (like we see)
 
 	bookBtn.forEach(btn => {
-		let hrefBtn = btn.getAttribute("href"); //returns the pathURI from element
+		let hrefBtn = btn.getAttribute('href'); //returns the pathURI from element
 		if (hrefBtn === pathURI) {
-			btn.classList.add("is-inactive");
+			btn.classList.add('is-inactive');
 		}
 	});
 }
-
 
 //******************
 // ASIDE MENU NAVIGATION
@@ -228,9 +229,8 @@ const capitulosBtn = document.querySelector('.js-aside-button');
 const modalAside = document.querySelector('.js-aside-modal');
 
 capitulosBtn.addEventListener('click', () => {
-  modalAside.classList.toggle('is-aside-nav--open');
-  modalAside.classList.toggle('is-modal');
+	modalAside.classList.toggle('is-aside-nav--open');
+	modalAside.classList.toggle('is-modal');
 
-  modalBgToggle();
+	modalBgToggle();
 });
-

@@ -20,6 +20,12 @@
       $pageSelected = 1;
     endif;
 
+    if(isset($_GET["livro"]) && !empty($_GET["livro"])):
+      $bookSelected = $_GET["livro"];
+    else:
+      $bookSelected = "";
+    endif;
+
 	} catch (Exception $e) {
 		echo ('MENSAGEM:' . $e->getMessage());
 	}
@@ -41,7 +47,11 @@
         echo "</header></section>";
 
       else:
-        $search = Search::searchTerms($terms, $pageSelected, $rowsPerPage);
+        $bookSelected === "" ? 
+          $search = Search::searchTerms($terms, $pageSelected, $rowsPerPage) : 
+          $search = Search::searchTermsByBook($terms, $bookSelected, $pageSelected, $rowsPerPage);
+        
+
         //print_r($search);
         //var_dump($search);
 
@@ -56,9 +66,13 @@
           echo "</header></section>";
 
         else:
-          echo "<p>Você procurou por &quot;<strong>$terms</strong>&quot;</p> 
-          <hr size='1'>";
+          echo "<p>Você procurou por &quot;<strong>$terms</strong>&quot;</p>";
 
+          if ($bookSelected <> ""): 
+            echo "<p>No livro de <strong>" . $search[0]["livro_nome"] . "</strong></p>"; 
+          endif;
+
+          echo "<hr size='1'>";
           echo "</header>";
     ?>
 
@@ -107,8 +121,10 @@
           ?>
             
               <tr>
-                <td><?= $row['livro_nome'] ?></td>
+                <td><a class="main__link--bold" href="/pesquisa.php?termos=<?= $terms ?>&livro=<?= $row['livro_slug']; ?>"><?= $row['livro_nome']; ?></a></td>
                 <td><?= $row['TOTAL'] ?></td>
+                <!-- <td><= $row['livro_nome'] ?></td>
+                <td><= $row['TOTAL'] ?></td> -->
               </tr>
 
             <!-- <a class="bible__main-btn" href="/kja/< ?= //$book['livro_slug'] ?>/< ?= //$i ?>">< ?= //$i ?></a> -->
@@ -126,9 +142,16 @@
   <div class="pagination">
 
     <?php // ********** PAGINATION ***********
-    $totalRows = Search::totalRows($terms);
+    if ($bookSelected === "") :
+      $rowsAllBooks = Search::totalRows($terms);
+      $totalRows = $rowsAllBooks[0];
+    else:
+      $rowsOneBook = Search::totalRowsByOneBook($terms, $bookSelected);
+      $totalRows = $rowsOneBook[0]["TOTAL"];
+    endif;
 
-    $totalPages = ceil($totalRows[0]/$rowsPerPage);
+
+    $totalPages = ceil($totalRows/$rowsPerPage);
     // FOR TEST ******
     //$totalPages = 10; 
     // ***************
@@ -211,7 +234,7 @@
       // HIGHLIGHT THE SELECTED ONE
 
       $pagination = new Search();
-      $paginationLinks = $pagination->paginationLinks($totalPages, $pagesStart, $pagesMid, $pagesEnd, $pageSelected, $terms);
+      $paginationLinks = $pagination->paginationLinks($totalPages, $pagesStart, $pagesMid, $pagesEnd, $pageSelected, $terms, $bookSelected);
 
       echo $paginationLinks;
 
