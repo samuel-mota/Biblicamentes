@@ -227,7 +227,7 @@ $bh: $h / 5; //bars height
   // DESKTOP
   @include media(medium) {
     position: fixed;
-    bottom: 10px;
+    bottom: 0;
     border-radius: 50%;
     height: 50px;
     width: 50px;

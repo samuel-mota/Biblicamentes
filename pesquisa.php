@@ -12,18 +12,28 @@
 
 	try {
     //$button = $_GET [ 'submit' ]; 
-    $terms = htmlspecialchars($_GET['termos'], ENT_QUOTES, 'UTF-8'); //transform characters in html notation
+    //transform characters in html notation
+    //$terms = htmlspecialchars($_GET['termos'], ENT_QUOTES, 'UTF-8'); 
 
-    if(isset($_GET["pagina"]) && is_numeric($_GET["pagina"]) && $_GET["pagina"] >= 1): //is_int retorna false :(
+    // remove some extra characters
+    $terms = preg_replace('/[^0-9A-Za-zÀ-ú ]/', '', $_GET['termos']);
+
+    if (isset($_GET["pagina"]) && is_numeric($_GET["pagina"]) && $_GET["pagina"] >= 1): //is_int retorna false :(
       $pageSelected = $_GET["pagina"];
     else:
       $pageSelected = 1;
     endif;
 
-    if(isset($_GET["livro"]) && !empty($_GET["livro"])):
+    if (isset($_GET["livro"]) && !empty($_GET["livro"])):
       $bookSelected = $_GET["livro"];
     else:
       $bookSelected = "";
+    endif;
+
+    if (isset($_GET["testamento"]) && !empty($_GET["testamento"])):
+      $testamentSelected = $_GET["testamento"];
+    else:
+      $testamentSelected = "";
     endif;
 
 	} catch (Exception $e) {
@@ -47,13 +57,16 @@
         echo "</header></section>";
 
       else:
-        $bookSelected === "" ? 
-          $search = Search::searchTerms($terms, $pageSelected, $rowsPerPage) : 
-          $search = Search::searchTermsByBook($terms, $bookSelected, $pageSelected, $rowsPerPage);
-        
 
-        //print_r($search);
-        //var_dump($search);
+// SEARCH BY BOOK / TESTAMENT / ALL
+// SEE PAGINATION
+        if ($bookSelected <> ""):
+          $search = Search::searchTermsByBook($terms, $bookSelected, $pageSelected, $rowsPerPage);
+        elseif ($testamentSelected <> ""):
+          $search = Search::searchTermsByTestament($terms, $testamentSelected, $pageSelected, $rowsPerPage);
+        else:
+          $search = Search::searchTerms($terms, $pageSelected, $rowsPerPage);
+        endif;
 
         if (count($search) == 0):
           echo "<p>Desculpe, não encontramos nenhum versículo correspondente para o(s) termo(s) &quot;<strong>$terms</strong>&quot;.</p>
@@ -84,6 +97,9 @@
         <?php 
         $count = 0;
 
+        $highlightWords = new Search();
+
+
         foreach($search as $term): 
           $count += 1; 
         ?>
@@ -94,7 +110,7 @@
             <?= $term['livro_nome']; ?>&nbsp;<?= $term['cap']; ?>:<?= $term['ver']; ?>
           </a>
 
-          <?= $term['texto']; ?>
+          <?php echo $highlightWords->highlightWords($term['texto'],$terms); ?>
 
         </p>
 
@@ -107,15 +123,29 @@
 
         <div class="aside-nav__bible--search">
         
-          <h3 class="aside-nav__bible--intro">Termos encontrados por livro</h3>
+          <h3 class="aside-nav__bible--intro">Termos encontrados na Bíblia</h3>
 
-            <!-- ROWS BY BOOKS -->
+<!-- ROWS BY TESTAMENTS / BOOKS -->
           <table>
 
           <?php 
-          //$totalRowsByTestament = ;
+          $totalRowsByTestament = Search::totalRowsByTestament($terms);
 
           $totalRowsByBooks = Search::totalRowsByBooks($terms);
+
+          foreach ($totalRowsByTestament as $row): 
+            if ($row["testamento"] === "velho"):
+              $testamentName = "Velho Testamento";
+            else:
+              $testamentName = "Novo Testamento";
+            endif; ?>
+
+                <tr>
+                  <td class="main__link--testament"><a class="main__link--bold" href="/pesquisa.php?termos=<?= $terms ?>&testamento=<?= $row['testamento']; ?>"><?= $testamentName ?></a></td>
+                  <td class="main__link--testament"><?= $row['TOTAL'] ?></td>
+                </tr>
+
+          <?php endforeach;
 
           foreach ($totalRowsByBooks as $row): 
           ?>
@@ -143,13 +173,21 @@
 
     <?php // ********** PAGINATION ***********
     if ($bookSelected === "") :
-      $rowsAllBooks = Search::totalRows($terms);
-      $totalRows = $rowsAllBooks[0];
-    else:
-      $rowsOneBook = Search::totalRowsByOneBook($terms, $bookSelected);
-      $totalRows = $rowsOneBook[0]["TOTAL"];
-    endif;
 
+    else:
+
+    endif;
+// PAGINATION FOR UNIQUE BOOK / UNIQUE TESTAMENT / ALL
+    if ($bookSelected <> ""):
+      $rowsSelected = Search::totalRowsByOneBook($terms, $bookSelected);
+      $totalRows = $rowsSelected[0]["TOTAL"];
+    elseif ($testamentSelected <> ""):
+      $rowsSelected = Search::totalRowsByOneTestament($terms, $testamentSelected);
+      $totalRows = $rowsSelected[0]["TOTAL"];
+    else:
+      $rowsSelected = Search::totalRows($terms);
+      $totalRows = $rowsSelected[0];
+    endif;
 
     $totalPages = ceil($totalRows/$rowsPerPage);
     // FOR TEST ******
@@ -234,7 +272,7 @@
       // HIGHLIGHT THE SELECTED ONE
 
       $pagination = new Search();
-      $paginationLinks = $pagination->paginationLinks($totalPages, $pagesStart, $pagesMid, $pagesEnd, $pageSelected, $terms, $bookSelected);
+      $paginationLinks = $pagination->paginationLinks($totalPages, $pagesStart, $pagesMid, $pagesEnd, $pageSelected, $terms, $bookSelected, $testamentSelected);
 
       echo $paginationLinks;
 

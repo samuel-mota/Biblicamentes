@@ -543,7 +543,7 @@ hr {
 @media (min-width: 768px) {
   .chapter-nav {
     position: fixed;
-    bottom: 10px;
+    bottom: 0;
     border-radius: 50%;
     height: 50px;
     width: 50px;
@@ -601,6 +601,10 @@ hr {
 
 .main__link--bold:hover, .main__link--bold:focus {
   color: #cc00cc;
+}
+
+.main__link--testament {
+  padding-bottom: 2em;
 }
 
 .entry-content__verse--cross-ref a {
@@ -1051,7 +1055,7 @@ html ::-webkit-scrollbar-thumb:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding-top: 5rem;
+  padding-top: 3.9rem;
 }
 
 .content__instagram-feed, .content__random-verse1, .content__random-verse2 {
