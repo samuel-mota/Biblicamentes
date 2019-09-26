@@ -28,7 +28,7 @@
 
     <?php endif; // titulo ?>
 
-    <p class="entry-content__verse verse-<?= $verse['ver']; ?>">
+    <p id="<?= $verse['ver']?>" class="entry-content__verse verse-<?= $verse['ver']; ?>">
       <!-- linha-conteudo linha-conteudo-ver -->
       <sup class="entry-content__verse--number"><?= $verse['ver']; ?></sup>
       <!-- <td class="linha-conteudo-texto"> -->

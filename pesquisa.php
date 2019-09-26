@@ -50,9 +50,10 @@
     <?php 
       //echo $pageSelected;
       $rowsPerPage = 20;
+      $minChar = 3;
 
-      if (strlen($terms) <= 1 || empty($terms)):
-        echo "<p>Termo muito curto, palavra deve conter pelo menos 2 caracteres</p>";
+      if (strlen($terms) < $minChar || empty($terms)):
+        echo "<p>Termo muito curto, palavra deve conter pelo menos $minChar caracteres</p>";
         
         echo "</header></section>";
 
