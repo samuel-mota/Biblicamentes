@@ -1,0 +1,7 @@
+// CORRECTION TO KEEP ANCHOR BELOW TO FIXED TOP MENU
+p[id] {
+  padding-top: 70px;
+  margin-top: -70px;
+  // vertical-align: top; OPCIONAL
+  //display: inline-block;  // required for webkit browsers
+}

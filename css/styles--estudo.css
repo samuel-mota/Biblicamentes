@@ -339,6 +339,11 @@ hr {
           flex-direction: column;
 }
 
+p[id] {
+  padding-top: 70px;
+  margin-top: -70px;
+}
+
 .navbar__button, .bible__main-btn, .aside-nav__button, .scroll-top__button, .chapter-nav {
   -webkit-appearance: none;
   border-style: none;

@@ -78,3 +78,5 @@
   </article>
 
 </div>
+
+<script src="/js/highlight-verses.js"></script>
