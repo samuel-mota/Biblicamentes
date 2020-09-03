@@ -1,4 +1,6 @@
 # Biblicamentes
-Biblicamentes website made from scratch using HTML, CSS, JS, PHP and MySQL
+Biblicamentes was made from scratch using HTML, CSS, JS, PHP and MySQL.
 
-It was hosted in wordpress before.
+Currently hosted here for testing: http://sandboxsam.ml/
+
+Based on this wordpress website https://biblicamentes.com.br/ (also made by me)
