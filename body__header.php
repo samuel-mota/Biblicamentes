@@ -46,9 +46,9 @@
 						<li class="nav-item">
 							<a href="/kja/gen/" class="nav-link">Estudo Bíblico</a>
 						</li>
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a href="#" class="nav-link js-external-link">WikiBíblia <i class="fas fa-external-link-alt"></i></a>
-						</li>
+						</li> -->
 						<li class="nav-item">
 							<a href="/contribua" class="nav-link">Contribua <i class="fas fa-donate"></i></a>
 						</li>
@@ -78,9 +78,9 @@
 						<li class="nav-item">
 							<a href="/kja/gen/" class="nav-link">Estudo Bíblico</a>
 						</li>
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a href="#" class="nav-link js-external-link">WikiBíblia <i class="fas fa-external-link-alt"></i></a>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 					

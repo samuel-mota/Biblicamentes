@@ -57,10 +57,10 @@
 					<em>Leitura da Bíblia com Referências Cruzadas, Dicionário e links informativos. <br>
 					<strong>Tradução Bíblia King James Atualizada (KJA)</strong></em>
 				</a>
-				<a class="footer__link js-external-link" href="#">
+				<!-- <a class="footer__link js-external-link" href="#">
 					<i class="fas fa-eye fa-2x fa-pull-left fa-border"></i> <strong>WikiBiblia</strong><br>
 					<em>Informações extras para complementar sua leitura bíblica.</em>
-				</a>
+				</a> -->
 				<a class="footer__link" href="/contribua">
 					<i class="fas fa-donate fa-2x fa-pull-left fa-border"></i> <strong>Contribua</strong><br>
 					<em>Ajude-nos a manter o website!</em>
