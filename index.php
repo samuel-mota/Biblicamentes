@@ -59,7 +59,7 @@
 
 			<script src="https://assets.juicer.io/embed.js" type="text/javascript"></script>
 			<link href="https://assets.juicer.io/embed.css" media="all" rel="stylesheet" type="text/css" />
-			<ul class="juicer-feed" data-feed-id="biblicamentes" data-pages="1" data-gutter="200"><h1 class="referral"><a href="https://www.juicer.io">Powered by Juicer</a></h1></ul>
+			<ul class="juicer-feed" data-feed-id="biblicamentes" data-pages="1" data-per="1" data-gutter="200"><h1 class="referral"><a href="https://www.juicer.io">Powered by Juicer</a></h1></ul>
 
 			<a href="https://www.instagram.com/biblicamentes" title="Siga-nos no Instagram!" class="instagram-follow-btn js-external-link"><i class="fab fa-instagram"></i> Siga-nos no Instagram!</a>
 
