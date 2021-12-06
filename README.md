@@ -4,14 +4,14 @@
 > 👋 *Bem Vindo ao Biblicamentes*
 
 <p align="center">
-  <img src=".github/example.gif" alt="image featured preview" width="100%" />  
+  <img src=".github/biblicamentes-front.jpg" alt="image featured preview" width="100%" />  
 <!-- ![Preview](https://i.ibb.co/mywwmZf/Inicio-move-it.gif) -->
 </p>
 
 ## 🚀 About
 > 🚀 *Sobre*
 
-*English*
+***English***
 
 Biblicamentes was developed from scratch using HTML, CSS, JS, PHP and MySQL.
 It's an old project, it was started on wordpress in which it was hosted for a few years in this way until it was developed from scratch based on the design used in the wordpress version.
@@ -20,7 +20,7 @@ I created the project to train my knowledge in these programming languages.
 
 It's a site where you can read the bible, search the cross-references of each verse, it has some additional explanations and a summary at the beginning of each book. More features will be added over time, such as maps, pictures of places, etc.
 
-*Português*
+***Português***
 
 Biblicamentes foi desenvolvido do zero usando HTML, CSS, JS, PHP e MySQL.
 É um projeto antigo, foi iniciado no wordpress no qual ficou hospedado por alguns anos dessa forma até ser desenvolvido do zero baseado no design usado na versão wordpress.
